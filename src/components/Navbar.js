@@ -36,8 +36,8 @@ export default function Navbar() {
         <img src={travel_mate_logo} alt='Travel Mate' className='w-36 h-auto' />
       </Link>
       <nav className='flex items-center gap-4 font-semibold'>
-        <Link to='/profile'>일정 추천</Link>
-        <Link to='/InfoMain'>여행지 정보</Link>
+        <Link to='/testpage'>일정 추천</Link>
+        <Link to='/test2'>여행지 정보</Link>
         <Link to='/test3'>커뮤니티</Link>
         <button onClick={handleDeleteUser} className='ml-4 text-sm'>
           회원탈퇴

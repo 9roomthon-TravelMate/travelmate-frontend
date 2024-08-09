@@ -5,16 +5,9 @@ import './index.css';
 import App from './App';
 import Home from './pages/HomePage';
 import NotFound from './pages/NotFound';
-import LoginPage from './pages/LoginPage';
-import Profile from './pages/Profile';
-import InfoMain from "./pages/InfoMain";
-import InfoArea from "./pages/InfoArea";
-import InfoPlace from"./pages/InfoPlace";
-import ScrollToTop from './ScrollToTop';
 import LoginPage from './pages/UserLoginPage';
 import TestPage from './pages/TestPage';
 import ProtectedRoute from './components/ProtectedRoute';
-
 
 const router = createBrowserRouter([
   {
@@ -24,24 +17,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, path: '/', element: <Home /> },
       { path: '/loginPage', element: <LoginPage /> },
-      {
-        path: '/profile',
-        element: <Profile />,
-      },
-      {
-        path: '/InfoMain',
-        element: <InfoMain />,
-      },
-      {
-        path: '/InfoArea',
-        element: <InfoArea />,
-      },
-      {
-        path: '/InfoPlace',
-        element: <InfoPlace />,
-      },
       { path: '/testpage', element: <ProtectedRoute element={<TestPage />} /> },
-
     ],
   },
 ]);
@@ -49,14 +25,6 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-      
-        <RouterProvider router={router} />
-      
-    
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
-
-
-
-
-
