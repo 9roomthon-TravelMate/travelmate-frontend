@@ -14,7 +14,7 @@ export default function Navbar() {
       <nav className='flex items-center gap-4 font-semibold'>
         <Link to='/profile'>일정 추천</Link>
         <Link to='/test2'>여행지 정보</Link>
-        <Link to='/test3'>커뮤니티</Link>
+        <Link to='/community'>커뮤니티</Link>
         <Link to='loginPage' className='flex items-center text-4xl text-brand'>
           <img
             src={travel_mate_logo}
