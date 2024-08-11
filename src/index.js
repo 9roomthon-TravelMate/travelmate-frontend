@@ -5,14 +5,17 @@ import './index.css';
 import App from './App';
 import Home from './pages/HomePage';
 import NotFound from './pages/NotFound';
-import InfoMain from "./pages/InfoMain";
-import InfoArea from "./pages/InfoArea";
-import InfoPlace from"./pages/InfoPlace";
+import InfoMain from './pages/InfoMain';
+import InfoArea from './pages/InfoArea';
+import InfoPlace from './pages/InfoPlace';
 import ScrollToTop from './ScrollToTop';
 import LoginPage from './pages/UserLoginPage';
 import TestPage from './pages/TestPage';
 import ProtectedRoute from './components/ProtectedRoute';
-
+import RegionPage from './pages/RegionPage';
+import DateRangePicker from './pages/DateRangePicker';
+import PreferencesPage from './pages/PreferencesPage';
+import SummaryPage from './pages/SummaryPage';
 
 const router = createBrowserRouter([
   {
@@ -35,7 +38,22 @@ const router = createBrowserRouter([
         element: <InfoPlace />,
       },
       { path: '/testpage', element: <ProtectedRoute element={<TestPage />} /> },
-
+      {
+        path: '/regionpage',
+        element: <ProtectedRoute element={<RegionPage />} />,
+      },
+      {
+        path: '/daterangepicker',
+        element: <ProtectedRoute element={<DateRangePicker />} />,
+      },
+      {
+        path: '/preferencespage',
+        element: <ProtectedRoute element={<PreferencesPage />} />,
+      },
+      {
+        path: '/summarypage',
+        element: <ProtectedRoute element={<SummaryPage />} />,
+      },
     ],
   },
 ]);
@@ -43,14 +61,6 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-      
-        <RouterProvider router={router} />
-      
-    
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
-
-
-
-
-
