@@ -110,6 +110,71 @@ export const deleteUser = async () => {
   );
 };
 
+export const fetchTourSpotReviewList = async(tourSpotId, query) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/tourspots/${tourSpotId}/reviews`, {
+      withCredentials: true,
+      params: query,
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response
+      ? error.response.data
+      : new Error('Error fetching tour spot review list');
+  }
+};
+
+export const fetchMyTourSpotReview = async(tourSpotId) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/tourspots/${tourSpotId}/reviews/my`, {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response
+      ? error.response.data
+      : new Error('Error fetching my tour spot review');
+  }
+};
+
+export const postTourSpotReview = async(tourSpotId, review) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/tourspots/${tourSpotId}/reviews`, review, {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response
+      ? error.response.data
+      : new Error('Error post tour spot review');
+  }
+};
+
+export const updateTourSpotReview = async(reviewId, review) => {
+  try {
+    const response = await axios.put(`${API_BASE_URL}/tourspot/reviews/${reviewId}`, review, {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response
+      ? error.response.data
+      : new Error('Error update tour spot review');
+  }
+};
+
+export const deleteTourSpotReview = async(reviewId) => {
+  try {
+    const response = await axios.delete(`${API_BASE_URL}/tourspot/reviews/${reviewId}`, {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response
+      ? error.response.data
+      : new Error('Error delete tour spot review');
+  }
+};
 export const sendSurveyData = async (dataToSend) => {
   try {
     const response = await axios.post(
