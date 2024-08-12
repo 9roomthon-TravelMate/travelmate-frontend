@@ -199,3 +199,66 @@ export const sendSurveyData = async (dataToSend) => {
     return null;
   }
 };
+
+// 좋아요 목록 가져오기
+export const fetchLikedPosts = async () => {
+  try {
+    const response = await axios.get('/mypage/likes', {
+      withCredentials: true,
+    });
+    return response.data.map(post => ({
+      id: post.id,
+      imageUri: post.imageUri
+    }));
+  } catch (error) {
+    throw error.response
+      ? error.response.data
+      : new Error('좋아요 한 게시물 정보를 가져오는 중 에러 발생:', error);
+  }
+};
+
+// 내 게시물 가져오기
+export const fetchMyPosts = async () => {
+  try {
+    const response = await axios.get('${API_BASE_URL}/mypage/posts', {
+      withCredentials: true,
+    });
+    return response.data.map(post => ({
+      id: post.id,
+      imageUri: post.imageUri
+    }));
+  } catch (error) {
+    throw error.response
+      ? error.response.data
+      : new Error('내 게시물 정보를 가져오는 중 에러 발생:', error);
+  }
+};
+
+// 추천 일정 목록 가져오기
+export const fetchRecommendedSchedules = async () => {
+  try {
+    const response = await axios.get('${API_BASE_URL}/mypage/recommends', {
+      withCredentials: true,
+    });
+    return response.data.map(schedule => ({
+      name: schedule.name,
+      address: schedule.address,
+      mainThumbnailUrl: schedule.mainThumbnailUrl // mainThumbnailUrl 필드를 포함합니다
+    }));
+  } catch (error) {
+    throw error.response
+      ? error.response.data
+      : new Error('추천 일정 정보를 가져오는 중 에러 발생:', error);
+  }
+};
+
+// 회원탈퇴
+export const deleteAccount = async () => {
+  try {
+    await axios.post('/users/delete', {
+      withCredentials: true,
+    });
+  } catch (error) {
+    console.error('회원탈퇴 중 에러 발생:', error);
+  }
+};
