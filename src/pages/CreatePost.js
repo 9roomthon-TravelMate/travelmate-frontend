@@ -57,7 +57,8 @@ export default function CreatePost() {
     files.forEach(file => formData.append('file', file));
 
     try {
-        console.log("form", formData);      
+        console.log("form", formData); 
+        console.log("postdto", data); 
         const response = await fetch(`${API_BASE_URL}/post/create`, {
         method: 'POST',
         body: formData,
