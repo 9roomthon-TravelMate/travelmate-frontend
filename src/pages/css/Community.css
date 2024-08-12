@@ -1,0 +1,192 @@
+.community_page{
+    background-color : #f2f2f2;
+    min-height: 100vh; /* 전체 화면을 커버할 수 있도록 최소 높이를 설정 */
+    padding: 20px; /* 원하는 패딩 설정 */
+}
+
+.default1{
+    font-size: 35px;
+    color: black;
+    text-align: center; /* 텍스트를 중앙 정렬합니다 */
+    font-weight: bold; /* 글씨를 굵게 만듭니다 */
+    display: block; /* 블록 레벨 요소로 만들어서 수평 중앙 정렬이 적용되게 합니다 */
+    width: 100%; /* 부모 요소의 너비를 100%로 설정하여 중앙 정렬이 가능하도록 합니다 */
+    position: absolute; /* 위치를 절대값으로 설정하여 위치를 조정합니다 */
+    top: 100px; /* 상단에 위치시키기 위해 top 값을 0으로 설정합니다 */
+    left: 50%; /* 좌측 중앙에 위치시키기 위해 left 값을 50%로 설정합니다 */
+    transform: translateX(-50%); /* 중앙 정렬을 위해 translateX를 사용합니다 */
+}
+
+.welcome {
+    font-size: 24px; /* 원하는 글씨 크기 */
+    color: black; /* 원하는 글씨 색상 */
+    font-weight: bold; /* 굵은 글씨 */
+    position: absolute; /* 위치를 절대값으로 설정합니다 */
+    top: 50%; /* 화면의 중앙 상단에 위치하도록 설정합니다 */
+    left: 50%; /* 화면의 중앙 좌측에 위치하도록 설정합니다 */
+    transform: translate(-50%, -50%); /* 요소를 중앙에 위치시키기 위해 이동합니다 */
+}
+
+.writepost_0 {
+    font-size: 16px; /* 원하는 글씨 크기 */
+    color: white; /* 버튼 글씨 색상 */
+    font-weight: bold; /* 굵은 글씨 */
+    background-color: #8e44ad; /* 버튼 배경 색상 */
+    border: none; /* 버튼 테두리 제거 */
+    padding: 10px 20px; /* 버튼 내부 여백 */
+    border-radius: 20px; /* 버튼의 모서리를 둥글게 만듭니다 */
+    position: absolute;
+    top: 50%; /* 화면의 중앙 상단에 위치하도록 설정합니다 */
+    left: 50%; /* 화면의 중앙 좌측에 위치하도록 설정합니다 */
+    margin-top: 60px;
+    transform: translateX(-50%);
+    cursor: pointer; /* 버튼에 커서 포인터 표시 */
+}
+    
+.writepost_1 {
+    font-size: 16px; /* 원하는 글씨 크기 */
+    color: white; /* 버튼 글씨 색상 */
+    font-weight: bold; /* 굵은 글씨 */
+    background-color: #8e44ad; /* 버튼 배경 색상 */
+    border: none; /* 버튼 테두리 제거 */
+    padding: 10px 20px; /* 버튼 내부 여백 */
+    border-radius: 20px; /* 버튼의 모서리를 둥글게 만듭니다 */
+    position: absolute;
+    top: 40px;
+    right: 100px;
+    padding: 10px 20px;
+    margin-top: 60px;
+    transform: translateX(-50%);
+    cursor: pointer; /* 버튼에 커서 포인터 표시 */
+
+}
+
+.post-list {
+    margin-top: 130px;
+    background-color: #f2f2f2;
+  }
+  
+  .post {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin: 20px auto; /* Center horizontally */
+    padding: 20px;
+    max-width: 800px; /* Optional: Limit the maximum width */
+    min-height: 400px; /* Ensure the post has a minimum height */
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-header {
+    margin-bottom: 15px;
+    font-size: medium;
+    font-weight: bold;
+  }
+  
+  .post-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  
+  .post-header .author {
+    font-size: 0.9em;
+    color: #555;
+  }
+  
+  .post-content {
+    margin-bottom: 15px;
+  }
+  
+  .post-content p {
+    margin: 0;
+  }
+  
+  .post-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* 이미지 사이의 간격 */
+    margin-top: 10px;
+  }
+  
+  /* 개별 이미지 스타일 */
+  .post-image {
+    max-width: 100%; /* 이미지가 부모 요소의 너비를 넘지 않게 설정 */
+    height: auto; /* 이미지의 높이를 자동으로 조정 */
+    border-radius: 10px; /* 이미지의 모서리를 둥글게 */
+  }
+  
+  .post-comments {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+  }
+  
+  .post-comments h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .post-comments ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .post-comments li {
+    padding: 5px 0;
+  }
+
+  .separator {
+    border-top: 1px solid #ddd; /* Light gray border for separation */
+    margin: 0; /* Space around the separator */
+    padding: 0;
+    margin-top: 8px;
+  }
+
+  .comment-form {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+  }
+  
+  .comment-header {
+    font-weight: bold;
+  }
+
+  .comment-form textarea {
+    width: 100%;
+    height: 60px; /* Adjust height as needed */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    resize: none; /* Prevent resizing */
+  }
+  
+  .comment-form button {
+    margin-top: 10px;
+    align-self: flex-end; /* Align to the right */
+    background-color: #8e44ad; /* Purple color */
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .comment-content {
+    font-weight: bold;
+  }
+
+  .post-content {
+    width: 80%; /* Adjust width for the post content */
+  }
+  
+  .post-comments {
+    width: 20%; /* Adjust width for the comments section */
+  }
+
+  .post-hashtags {
+    margin-bottom: 15px;
+  }
+  
+  .comment-form button:hover {
+    background-color: #5a30a2; /* Darker purple for hover effect */
+  }

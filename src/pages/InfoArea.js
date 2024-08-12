@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import defaultImage from'../assets/images/default_image.jpg';
 import Paging from '../components/Paging';
+import StarRating from "../components/Star";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { fetchRegions, fetchDistricts, fetchThemes, fetchTourismInfo } from "../utils/api";
-import Navbar from "../components/Navbar";
 
 
 function InfoArea() {
@@ -21,6 +21,7 @@ function InfoArea() {
   const [currentPage,setCurrentPage] = useState(1); //현재 페이지
   const [count, setCount] = useState(10); // 총 아이템 갯수
   const [error, setError] = useState(null);
+  const [starScore, setStarScore] = useState(null);
   
 
   useEffect(() => {
@@ -103,7 +104,9 @@ function InfoArea() {
 
         setTourismInfo(data.content);
         setCount(data.totalElements);
-        console.log('totalElements',data.totalElements);
+
+        
+        
       } catch (err) {
         setError(err);
       }
@@ -115,18 +118,27 @@ function InfoArea() {
     setAreaButton(code);
     const selectedArea = areaCodes.find(a => a.id === code);
     navigate('.', { state: { area: selectedArea } });
-    console.log('areacode:',code)
+    
+  };
+
+  //전체 지역 버튼 클릭
+  const handleAllButtonClick = (code) => {
+    setAreaButton(code);
+    setCityButton(code);
+    const selectedArea = areaCodes.find(a => a.id === code);
+    navigate('.', { state: { area: selectedArea } });
+    
   };
 
   const handleCityButtonClick = (code) => {
     setCityButton(code);
-    console.log('citycode',code)
+    
     
   };
 
   const handleThemeButtonClick = (code) => {
     setThemeButton(code);
-    console.log('themecode',code)
+    
     
   };
 
@@ -141,17 +153,17 @@ function InfoArea() {
 
   return (
     <div>
-      {/* nav 태그 */}
-      <Navbar/>
 
-      {/* 여행 필터 선택 */}
+      
+
+      
       <div className="pt-24 pb-24" style={{ backgroundColor: '#F4F4F4', minHeight: '100vh' }}>
 
     <div className="font-bold text-2xl m-20 mb-2 mt-7">
       #{area ? area.name : '전체'}
       
     </div>
-
+    {/*좌: 여행 필터 선택 */}
     <div className="flex  h-screen">
       <div className="w-1/3 flex flex-col  ">
         <div className="font-bold text-base ml-20 mt-5">
@@ -159,28 +171,38 @@ function InfoArea() {
         </div>
         <div className=" bg-white text-sm  rounded-xl ml-20 mt-5 w-2/3">
           <div className="m-3">
-
-          <button  onClick={() => handleButtonClick("")} className="p-1 mt-1.5 mb-1.5 ml-2 mr-2 font-semibold" style={{ color: areaButton === "" ? 'black' : '#7B7B7B' }}>
+          {/* 지역 버튼  */}
+          <button  onClick={() => handleAllButtonClick("")} className="p-1 mt-1.5 mb-1.5 ml-2 mr-2 font-semibold" style={{ color: areaButton === "" ? 'black' : '#7B7B7B' }}>
                 #전체
           </button>
-          
             {areaCodes.map((area) => (
               <button key={area.id} onClick={() => handleButtonClick(area.id)} className="p-1 mt-1.5 mb-1.5 ml-2 mr-2 font-semibold" style={{ color: areaButton === area.id ? 'black' : '#7B7B7B' }}>
                 #{area.name}
               </button>
             ))}
-            <div className="ml-4 mr-4 mb-2 mt-2 border-b border-black"></div>
-            <button  onClick={() => handleCityButtonClick("")} className="ml-3 mr-3 mt-2 mb-2 font-semibold" style={{ color: cityButton === "" ? 'black' : '#7B7B7B'  }}>
-                #전체
-              </button>
 
-            {cityCodes.map((city) => (
-              <button key={city.districtId} onClick={() => handleCityButtonClick(city.districtId)} className="ml-3 mr-3 mt-2 mb-2 font-semibold" style={{ color: cityButton === city.districtId ? 'black' : '#7B7B7B' }}>
-                #{city.name}
-              </button>
-            ))}
             <div className="ml-4 mr-4 mb-2 mt-2 border-b border-black"></div>
+          {/* 시군구 버튼 */}
+          {/* areaButton이 ""이 아닐떄만 나타나도록 허용 */}
+          {areaButton !== "" ? (
+              <>
 
+          <button onClick={() => handleCityButtonClick("")} className="ml-3 mr-3 mt-2 mb-2 font-semibold" style={{ color: cityButton === "" ? 'black' : '#7B7B7B' }}>
+          #전체
+          </button>
+
+          {cityCodes.map((city) => (
+          <button key={city.districtId} onClick={() => handleCityButtonClick(city.districtId)} className="ml-3 mr-3 mt-2 mb-2 font-semibold" style={{ color: cityButton === city.districtId ? 'black' : '#7B7B7B' }}>
+          #{city.name}
+          </button>
+              ))}
+    
+          <div className="ml-4 mr-4 mb-2 mt-2 border-b border-black"></div>
+
+          </>
+
+          ) : null}
+            {/* 필터 버튼 */}
             <button  onClick={() => handleThemeButtonClick("")} className="ml-3 mr-3 mt-2 mb-2" style={{color: themeButton === "" ? 'black' : '#7B7B7B'  }}>
                 #전체
               </button>
@@ -197,8 +219,13 @@ function InfoArea() {
         </div>
       </div>
 
-      <div className="w-2/3 mt-6 ml-28 flex flex-col items-start">
-      <div className="text-base font-semibold flex ">총 <div style={{ color:'#4592BD' }}> {count} </div> 건</div> 
+      {/* 우:장소 선택 */}
+      <div className="w-2/3 mt-6 ml-28 flex items-start flex-col">
+      <div className="text-base font-semibold flex">
+      총&nbsp;<div style={{ color:'#4592BD' }}>{count}</div>건
+      </div>
+
+    <div > 
     {tourismInfo ? (
     <div className="text-black text-sm flex flex-wrap mt-10">
       {tourismInfo.map((info) => (
@@ -209,8 +236,11 @@ function InfoArea() {
             className="w-36 h-24 object-cover mr-4" 
           />
           <div className="text-start">
-            <h2 className="text-sm font-semibold ">{info.name}</h2>
-            <p className="text-xs">{info.address}</p>
+            <h2 className="text-sm font-semibold pb-1">{info.name}</h2>
+            <p className="text-xs pb-1">{info.address}</p>
+            <div>
+              <StarRating ratingSum={info.ratingSum} reviewCount={info.reviewCount}/>
+            </div>
           </div>
         </button>
       ))}
@@ -220,15 +250,18 @@ function InfoArea() {
       No tourism information found.
     </div>
   )}
-  <Paging page={currentPage} count={count} setPage={setPage} />
-  </div>
-
-  </div>
-
-  </div>
-  
-
+  <div className="flex justify-center mr-72">
+    <Paging page={currentPage} count={count} setPage={setPage} />
     
+  </div>
+  </div>
+
+
+
+
+  </div>
+  </div>
+  </div> 
   </div>
   )
 }

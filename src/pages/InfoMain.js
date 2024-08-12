@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
 import navigationIcon from '../assets/images/navigation 1.svg';
 import { fetchRegions } from "../utils/api";
 
@@ -57,15 +56,14 @@ function InfoMain() {
 
     const handleAreaClick = (area) => {
       navigate('/InfoArea', { state: { area } });
-      console.log('area',area);
+      
     };
     
 
   
   return (
   <div>
-      {/* nav 태그 */}
-      <Navbar/>
+      
 
       {/* 여행 지역 선택 */}
       <div className="pt-24 pb-24" style={{ backgroundColor: '#F4F4F4', minHeight: '100vh' }}>
@@ -75,7 +73,7 @@ function InfoMain() {
       <div className="grid grid-cols-1 sm:grid-cols-2         md:grid-cols-4 lg:grid-cols-4 gap-7">
         {areaCodes.map((area) => (
           <button key={area.id} className="border rounded-lg overflow-hidden shadow-md w-44 m-2" onClick={()=>handleAreaClick(area)}>
-            <img src={'https://cdn.pixabay.com/photo/2022/06/24/05/35/ocean-7281047_1280.jpg'} alt={area.name} className="w-full h-44 object-cover" />
+            <img src={area.imageUrl} alt={area.name} className="w-full h-44 object-cover" />
             <div className="pt-2 pl-2 pb-1 text-left font-semibold" style={{ color: '#5E6282' }}>
               {area.name}
             </div>
