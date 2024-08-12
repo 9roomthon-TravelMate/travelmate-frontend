@@ -1,0 +1,80 @@
+/* CustomDatePicker.css */
+
+.custom-datepicker {
+  border: 2px solid #a8e6ff; /* Adjust border color to light sky blue */
+  padding: 8px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.custom-calendar-container {
+  width: 400px; /* Make the calendar wider */
+  height: 400px; /* Increase the height */
+}
+
+.react-datepicker__header {
+  background-color: #a8e6ff; /* Light sky blue header background */
+  border-bottom: none;
+  border-radius: 10px 10px 0 0; /* Rounded corners at the top */
+}
+
+.react-datepicker__current-month {
+  color: #005f73; /* Darker blue text for month name */
+  font-size: 1.4rem; /* Increase font size */
+  font-weight: bold; /* Make the month and year bold */
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+  width: 50px; /* Increase day size */
+  height: 50px; /* Increase day size */
+  line-height: 50px;
+  margin: 0.5rem;
+  font-size: 1.1rem;
+  color: #005f73; /* Darker shade of blue for day names and days */
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--in-range,
+.react-datepicker__day--keyboard-selected {
+  background-color: #a8e6ff; /* Light sky blue for selected days */
+  color: #005f73; /* Darker blue for text */
+  border-radius: 50% !important;
+}
+
+.react-datepicker__day:hover {
+  background-color: #d0f0ff; /* Even lighter blue on hover */
+  color: #000;
+}
+
+.react-datepicker__day--today {
+  border: 2px solid #a8e6ff; /* Highlight today's date with softer light sky blue */
+  color: #000;
+  border-radius: 10px;
+}
+
+.react-datepicker__day--disabled {
+  color: #cbe1d3; /* Gray out disabled dates */
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: #ffffff; /* White arrows */
+}
+
+.react-datepicker__navigation--previous {
+  border-radius: 50%;
+  background-color: #a8e6ff;
+}
+
+.react-datepicker__navigation--next {
+  border-radius: 50%;
+  background-color: #a8e6ff;
+}
+
+.react-datepicker__day--in-selecting-range {
+  opacity: 0.5;
+  background-color: #a8e6ff !important; /* Soft aqua that blends well with light sky blue */
+  color: #000; /* Darker muted blue for text */
+  border-radius: 50%;
+}
