@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import StarRating from '../components/StarRating';
 import { postTourSpotReview, fetchMyTourSpotReview, updateTourSpotReview, deleteTourSpotReview } from "../utils/api";
-import {sleep} from '../utils/sleep';
 
 
 export default function TourSpotReviewForm({ tourSpotId, onSubmitSuccess }) {
