@@ -1,0 +1,173 @@
+.default{
+    font-size: 25px;
+    color: black;
+    text-align: center; 
+    font-weight: bold; 
+    display: block; 
+    width: 100%; 
+    position: absolute; 
+    top: 60px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+.creatpost-container {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    width: 75%;
+    height: 83%;
+    background-color: #f2f2f2;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute; 
+    top : 110px;
+    left: 50%; 
+    transform: translateX(-50%); 
+    padding: 20px; 
+    box-sizing: border-box; 
+}
+
+.creatpost-container h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+ 
+  .creatpost-container form {
+    display: flex;
+    flex-direction: column;
+    width : 90%;
+  }
+  
+  .creatpost-container form > div {
+    margin-bottom: 10px;
+  }
+  
+  .creatpost-container form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .creatpost-container form input,
+  .creatpost-container form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .creatpost-container form .content textarea {
+    height: 200px; /* 내용 입력 필드의 높이를 크게 설정 */
+  }
+  
+  .creatpost-container form input[type="file"] {
+    border: none;
+    padding: 0;
+  }
+  
+  .file-preview,
+  .hashtag-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: px;
+  }
+  
+  .file-item,
+  .hashtag-item {
+    font-size: 15px;
+    background: #f1f1f1;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .file-item .remove-button,
+  .hashtag-item .remove-button {
+    background: none;
+    border: none;
+    color: #f00;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .submit-button {
+    position: absolute;
+    top: 40px;
+    right: 95px;
+    padding: 10px 20px;
+    background-color: #8e44ad;
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+
+/* Error modal background */
+.error-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure it is on top */
+  }
+  
+  /* Modal content box */
+  .error-modal-content {
+    background: #fff; /* White background for the modal */
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    max-width: 80%;
+    text-align: center;
+    position: relative;
+  }
+  
+  /* Close button style */
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e74c3c; /* Red background */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .close-button:hover {
+    background: #c0392b; /* Darker red on hover */
+  }
+  
+  /* Error message text */
+  .error-modal-content p {
+    margin: 0;
+    font-size: 16px;
+    color: #333; /* Dark text color */
+  }
+  
