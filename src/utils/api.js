@@ -134,3 +134,23 @@ export const sendSurveyData = async (dataToSend) => {
     return null;
   }
 };
+
+export const saveVisitedPlaces = async (contentIds) => {
+  try {
+    const response = await axios.post(
+      `${API_BASE_URL}/recommend/save-visited`,
+      {
+        contentIds,
+      }
+    );
+
+    if (response.status !== 200) {
+      throw new Error('Failed to save visited places');
+    }
+
+    return response;
+  } catch (error) {
+    console.error('Error saving visited places:', error);
+    throw error;
+  }
+};
