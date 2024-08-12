@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
-import { useLocation } from 'react-router-dom';
 import defaultImage from'../assets/images/default_image.jpg';
 import { fetchTourPlace } from "../utils/api";
+import TourSpotReviewList from '../components/TourSpotReviewList';
+import Spinner from '../components/Spinner';
+import StarRating from '../components/StarRating';
+import TourSpotReviewForm from '../components/TourSpotReviewForm';
 
 
 function InfoPlace() {
@@ -11,6 +15,8 @@ function InfoPlace() {
   const { info } = location.state || {};
   const [place, setPlace] = useState(null);
   const [error, setError] = useState(null);
+  const [reviewsReloadTrigger, setReviewsReloadTrigger] = useState(false);
+  const [reviewStat, setReviewStat] = useState(null);
   const [current, setCurrent] = useState(0);
   const [length, setLength] = useState(0);
 
@@ -37,6 +43,21 @@ function InfoPlace() {
     getPlaces();
   }, [info]);
   
+  // reviewStat이 아직 초기화되지 않은 경우에 초기화
+  useEffect(() => {
+    if (!place || reviewStat) return;
+
+    const { ratingSum, reviewCount } = place;
+    setReviewStat({
+      averageRating: (ratingSum / reviewCount) || 0,
+      count: reviewCount + 1
+    });
+  }, [place, reviewStat]);
+
+  const handleReviewSubmitSuccess = () => {
+    setReviewsReloadTrigger(trigger => !trigger);
+  };
+
   return (
     <div>
       
@@ -67,9 +88,32 @@ function InfoPlace() {
           
           <div className="font-bold text-lg text-gray-800 mb-2">주소</div>
           <div className="text-gray-700 text-base mb-6">{place.address}</div>
+          {/* 평점 및 리뷰 */}
+          <div className="border-b border-gray-300 mb-4"></div>
+          <div className="border-b border-black"></div>
+                <div className="font-bold text-base m-3 mb-2">평점 및 리뷰 ({reviewStat?.count ?? 0})</div>
+                <div className="flex gap-2 mx-3 mb-3 items-center">
+                  <div className="font-bold text-lg">
+                    {reviewStat?.averageRating ? reviewStat.averageRating.toFixed(1) : "0.0"}
+                  </div>
+                  <StarRating rating={reviewStat?.averageRating ?? 0} isDisabled={true} />
+                </div>
+
+                <TourSpotReviewList 
+                  tourSpotId={info} 
+                  reviewStat={reviewStat} 
+                  setReviewStat={setReviewStat} 
+                  reloadTrigger={reviewsReloadTrigger} 
+                />
+
+                <div className="border-b my-4 border-black"></div>
+                <TourSpotReviewForm tourSpotId={info} onSubmitSuccess={handleReviewSubmitSuccess} />
+
         </>
       ) : (
-        <div className="text-center text-2xl font-bold text-gray-700">Loading...</div>
+        <div className="flex justify-center">
+                <Spinner />
+              </div>
       )}
     </div>
   </div>
