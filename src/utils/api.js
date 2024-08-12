@@ -200,6 +200,27 @@ export const sendSurveyData = async (dataToSend) => {
   }
 };
 
+
+export const saveVisitedPlaces = async (contentIds) => {
+  try {
+    const response = await axios.post(
+      `${API_BASE_URL}/recommend/save-visited`,
+      {
+        contentIds,
+      }
+    );
+
+    if (response.status !== 200) {
+      throw new Error('Failed to save visited places');
+    }
+
+    return response;
+  } catch (error) {
+    console.error('Error saving visited places:', error);
+    throw error;
+  }
+};
+
 // 좋아요 목록 가져오기
 export const fetchLikedPosts = async () => {
   try {
@@ -262,3 +283,4 @@ export const deleteAccount = async () => {
     console.error('회원탈퇴 중 에러 발생:', error);
   }
 };
+
