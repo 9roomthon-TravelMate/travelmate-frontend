@@ -7,5 +7,6 @@ Dockerfile
 .env.*
 
 .git
+.github
 build
 node_modules
