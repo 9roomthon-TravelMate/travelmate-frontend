@@ -53,7 +53,7 @@ export default function Navbar() {
       >
         <Link to='/regionpage'>일정 추천</Link>
         <Link to='/InfoMain'>여행지 정보</Link>
-        <Link to='/testpage'>커뮤니티</Link>
+        <Link to='/community'>커뮤니티</Link>
 
         {!user ? (
           <Link to='/loginPage' className='font-base mr-4'>
