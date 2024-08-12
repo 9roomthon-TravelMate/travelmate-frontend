@@ -8,7 +8,7 @@ import NotFound from './pages/NotFound';
 import InfoMain from './pages/InfoMain';
 import InfoArea from './pages/InfoArea';
 import InfoPlace from './pages/InfoPlace';
-import ScrollToTop from './ScrollToTop.js';
+import ScrollToTop from './ScrollToTop';
 import LoginPage from './pages/UserLoginPage';
 import TestPage from './pages/TestPage';
 import ProtectedRoute from './components/ProtectedRoute';
