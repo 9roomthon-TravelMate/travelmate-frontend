@@ -49,7 +49,7 @@ export default function TourSpotReviewList({ tourSpotId, setReviewStat, reloadTr
     <div>
       <div className="flex flex-col gap-3">
         {reviewPage.content.map(review => (
-          <div key={review.id} className="flex gap-8 bg-[#fff9f9] p-4 lg:p-6 items-start relative">
+          <div key={review.id} className="flex gap-8 bg-[#fff9f9] p-4 lg:p-6 items-start relative rounded">
             <div className="flex gap-2 items-center">
               <div>
                 <img src={review.writer.profileImageUrl} alt="Profile" className="w-8 h-8 rounded-full" />

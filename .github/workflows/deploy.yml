@@ -30,6 +30,7 @@ jobs:
           tags: travelmate7/travelmate-frontend:latest
           build-args: |
             REACT_APP_API_BASE_URL=${{ secrets.REACT_APP_API_BASE_URL }}
+            REACT_APP_KAKAO_API_JAVASCRIPT_KEY=${{ secrets.KAKAO_API_JAVASCRIPT_KEY }}
 
   deploy:
     needs: build
