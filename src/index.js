@@ -3,10 +3,19 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import Home from './pages/Home';
+import Home from './pages/HomePage';
 import NotFound from './pages/NotFound';
-import LoginPage from './pages/LoginPage';
-import Profile from './pages/Profile';
+import InfoMain from './pages/InfoMain';
+import InfoArea from './pages/InfoArea';
+import InfoPlace from './pages/InfoPlace';
+import ScrollToTop from './ScrollToTop.js';
+import LoginPage from './pages/UserLoginPage';
+import TestPage from './pages/TestPage';
+import ProtectedRoute from './components/ProtectedRoute';
+import RegionPage from './pages/RegionPage';
+import DateRangePicker from './pages/DateRangePicker';
+import PreferencesPage from './pages/PreferencesPage';
+import SummaryPage from './pages/SummaryPage';
 import Community from './pages/Community';
 import  CreatePost from './pages/CreatePost';
 
@@ -19,9 +28,43 @@ const router = createBrowserRouter([
     children: [
       { index: true, path: '/', element: <Home /> },
       { path: '/loginPage', element: <LoginPage /> },
-      { path: '/profile', element: <Profile />, },
-      { path: '/community', element: <Community /> },
-      { path: '/create-post', element: <CreatePost /> }
+      {
+        path: '/InfoMain',
+        element: <InfoMain />,
+      },
+      {
+        path: '/InfoArea',
+        element: <InfoArea />,
+      },
+      {
+        path: '/InfoPlace',
+        element: <InfoPlace />,
+      },
+      { path: '/testpage', element: <ProtectedRoute element={<TestPage />} /> },
+      {
+        path: '/regionpage',
+        element: <ProtectedRoute element={<RegionPage />} />,
+      },
+      {
+        path: '/daterangepicker',
+        element: <ProtectedRoute element={<DateRangePicker />} />,
+      },
+      {
+        path: '/preferencespage',
+        element: <ProtectedRoute element={<PreferencesPage />} />,
+      },
+      {
+        path: '/summarypage',
+        element: <ProtectedRoute element={<SummaryPage />} />,
+      },
+      {
+        path: '/community',
+        element: <ProtectedRoute element={<Community />} />,
+      },
+      {
+        path: '/create-post',
+        element: <ProtectedRoute element={<CreatePost />} />,
+      },
     ],
   },
 ]);

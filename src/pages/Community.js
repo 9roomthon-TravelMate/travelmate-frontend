@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './css/Community.css';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export default function Community() {
   const [posts, setPosts] = useState([]);
@@ -11,7 +12,7 @@ export default function Community() {
 
   const getallposts = async () => {
     try {
-      const response = await fetch('http://localhost:8080/post/community', {
+      const response = await fetch(`${API_BASE_URL}/post/community`, {
         method: 'GET',
         credentials: 'include', //쿠키정보도 같이 보내는 것
       });
@@ -55,7 +56,7 @@ export default function Community() {
     try {
         console.log("Sending comment to server:", commentDto);
 
-        const response = await fetch('http://localhost:8080/comment/create', {
+        const response = await fetch(`${API_BASE_URL}/comment/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', // JSON 데이터로 전송
@@ -92,7 +93,7 @@ export default function Community() {
   const handleLikeToggle = async (postId) => {
     try {
       const isLiked = likedPosts.has(postId);  // 현재 좋아요 상태 확인
-      const url = `http://localhost:8080/like/${isLiked ? 'remove' : 'add'}`;
+      const url = `${API_BASE_URL}/like/${isLiked ? 'remove' : 'add'}`;
       const likeDto = { postId };
       const data = {
         LikeDto: likeDto

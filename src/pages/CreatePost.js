@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './css/CreatePost.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 export default function CreatePost() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -56,7 +58,7 @@ export default function CreatePost() {
 
     try {
         console.log("form", formData);      
-        const response = await fetch('http://localhost:8080/post/create', {
+        const response = await fetch(`${API_BASE_URL}/post/create`, {
         method: 'POST',
         body: formData,
         credentials: 'include', // 쿠키정보도 같이 보내는 것
