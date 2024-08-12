@@ -203,7 +203,7 @@ export const sendSurveyData = async (dataToSend) => {
 // 좋아요 목록 가져오기
 export const fetchLikedPosts = async () => {
   try {
-    const response = await axios.get('/mypage/likes', {
+    const response = await axios.get(`${API_BASE_URL}/mypage/likes`, {
       withCredentials: true,
     });
     return response.data.map(post => ({
@@ -220,7 +220,7 @@ export const fetchLikedPosts = async () => {
 // 내 게시물 가져오기
 export const fetchMyPosts = async () => {
   try {
-    const response = await axios.get('${API_BASE_URL}/mypage/posts', {
+    const response = await axios.get(`${API_BASE_URL}/mypage/posts`, {
       withCredentials: true,
     });
     return response.data.map(post => ({
@@ -237,7 +237,7 @@ export const fetchMyPosts = async () => {
 // 추천 일정 목록 가져오기
 export const fetchRecommendedSchedules = async () => {
   try {
-    const response = await axios.get('${API_BASE_URL}/mypage/recommends', {
+    const response = await axios.get(`${API_BASE_URL}/mypage/recommends`, {
       withCredentials: true,
     });
     return response.data.map(schedule => ({
@@ -255,7 +255,7 @@ export const fetchRecommendedSchedules = async () => {
 // 회원탈퇴
 export const deleteAccount = async () => {
   try {
-    await axios.post('/users/delete', {
+    await axios.post(`${API_BASE_URL}/users/delete`, {
       withCredentials: true,
     });
   } catch (error) {
