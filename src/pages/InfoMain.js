@@ -64,8 +64,6 @@ function InfoMain() {
   
   return (
   <div>
-      {/* nav 태그 */}
-      <Navbar/>
 
       {/* 여행 지역 선택 */}
       <div className="pt-24 pb-24" style={{ backgroundColor: '#F4F4F4', minHeight: '100vh' }}>

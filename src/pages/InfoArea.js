@@ -19,7 +19,7 @@ function InfoArea() {
   const [themeButton, setThemeButton] = useState("");
   const [tourismInfo, setTourismInfo] = useState([]);
   const [currentPage,setCurrentPage] = useState(1); //현재 페이지
-  const [count, setCount] = useState(10); // 총 아이템 갯수
+  const [count, setCount] = useState(0); // 총 아이템 갯수
   const [error, setError] = useState(null);
   
 
@@ -141,9 +141,6 @@ function InfoArea() {
 
   return (
     <div>
-      {/* nav 태그 */}
-      <Navbar/>
-
       {/* 여행 필터 선택 */}
       <div className="pt-24 pb-24" style={{ backgroundColor: '#F4F4F4', minHeight: '100vh' }}>
 
