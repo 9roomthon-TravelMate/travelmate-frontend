@@ -39,7 +39,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className='flex justify-between border-b border-gray-300 p-2 h-16'>
+    <header className='fixed top-0 left-0 w-full bg-white flex justify-between border-b border-gray-300 p-2 h-16'>
       <Link to='/' className='flex items-center'>
         <img
           src={travel_mate_logo}
@@ -56,7 +56,7 @@ export default function Navbar() {
         <Link to='/testpage'>커뮤니티</Link>
 
         {!user ? (
-          <Link to='/loginPage' className='font-semibold mr-4'>
+          <Link to='/loginPage' className='font-base mr-4'>
             로그인
           </Link>
         ) : (
