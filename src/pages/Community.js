@@ -153,7 +153,7 @@ export default function Community() {
                 {post.images && post.images.length > 0 && (
                   <div className='post-images'> 
                     {post.images.map((image) => (
-                      <img key={image.id} src={`http://localhost:8080/images?filename=${encodeFilename(image.saveImageName)}`} alt={image.originalImageName} />
+                      <img key={image.id} src={`${API_BASE_URL}/images?filename=${encodeFilename(image.saveImageName)}`} alt={image.originalImageName} />
                       ))}
                   </div>
                 )}
