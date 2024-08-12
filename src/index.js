@@ -18,6 +18,7 @@ import PreferencesPage from './pages/PreferencesPage';
 import SummaryPage from './pages/SummaryPage';
 import Community from './pages/Community';
 import  CreatePost from './pages/CreatePost';
+import MyPage from './pages/MyPage';
 
 
 const router = createBrowserRouter([
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: '/create-post',
         element: <ProtectedRoute element={<CreatePost />} />,
+      },
+      { 
+        path: '/mypage', 
+        element: <MyPage /> 
       },
     ],
   },
