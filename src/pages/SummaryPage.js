@@ -36,10 +36,10 @@ export default function SummaryPage() {
   return (
     <div className='container mx-auto p-4'>
       <div className='mb-8 mt-8'>
-        <h1 className='text-lg mb-2' style={{ color: '#7E7C7C' }}>
+        <h1 className='text-lg mb-4 mt-12' style={{ color: '#7E7C7C' }}>
           당신의 취향에 딱 맞는 장소들을 찾았습니다!
         </h1>
-        <p className='text-2xl'>
+        <p className='text-2xl mb-12'>
           방문하고 싶은 장소들을 내 여행에 추가해보세요.
         </p>
       </div>
