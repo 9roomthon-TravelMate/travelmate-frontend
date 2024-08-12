@@ -16,6 +16,9 @@ import RegionPage from './pages/RegionPage';
 import DateRangePicker from './pages/DateRangePicker';
 import PreferencesPage from './pages/PreferencesPage';
 import SummaryPage from './pages/SummaryPage';
+import Community from './pages/Community';
+import  CreatePost from './pages/CreatePost';
+
 
 const router = createBrowserRouter([
   {
@@ -53,6 +56,14 @@ const router = createBrowserRouter([
       {
         path: '/summarypage',
         element: <ProtectedRoute element={<SummaryPage />} />,
+      },
+      {
+        path: '/community',
+        element: <ProtectedRoute element={<Community />} />,
+      },
+      {
+        path: '/create-post',
+        element: <ProtectedRoute element={<CreatePost />} />,
       },
     ],
   },
