@@ -50,7 +50,7 @@ export default function RegionPage() {
       }}
     >
       <div className='container mx-auto p-4 mt-12'>
-        <h1 className='text-xl mb-4' style={{ color: '#7E7C7C' }}>
+        <h1 className='text-xl mb-4 mt-12' style={{ color: '#7E7C7C' }}>
           이번 여행, 어디로 떠나볼까요?
         </h1>
         <h2 className='text-2xl mb-12'>
