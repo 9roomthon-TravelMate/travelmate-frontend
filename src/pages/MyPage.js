@@ -55,24 +55,23 @@ export default function MyPage() {
 
   return (
     <div className="flex flex-col items-center bg-gray-100 min-h-screen overflow-hidden pt-20">
-      {/* Increase padding-top to push the content further down */}
       <div className="bg-white w-3/5 p-6 shadow-lg rounded-lg flex flex-col" style={{ minHeight: 'calc(100vh - 5rem)' }}>
         <div className="flex flex-col items-center mb-8">
-          <img src={user?.profile_image || 'default_profile_image_url_here'} alt="Profile" className="w-32 h-32 rounded-full mb-4" />
-          <h1 className="text-2xl font-bold text-center">{user?.nickname || '사용자 이름'}</h1>
+          <img src={user?.profile_image || 'default_profile_image_url_here'} alt="Profile" className="w-20 h-20 rounded-full mb-4" />
+          <h1 className="text-lg text-center">{user?.nickname || '사용자 이름'}</h1>
         </div>
 
         <div className="relative flex border-b border-gray-300 mb-4">
           <div className="absolute bottom-0 h-1 bg-[#411A90]" style={getTabBackgroundStyle()}></div>
           <div className="flex w-full">
-            <button className={`w-1/3 p-2 text-left text-lg ${activeTab === 1 ? 'text-[#411A90]' : 'text-gray-600'}`} onClick={() => setActiveTab(1)}>
-              좋아요 <span className={`${activeTab === 1 ? 'text-[#411A90]' : 'text-gray-500'} font-bold`}>{likedPosts.length}</span>
+            <button className={`w-1/3 p-2 text-center text-base ${activeTab === 1 ? 'text-[#411A90]' : 'text-gray-600'}`} onClick={() => setActiveTab(1)}>
+              좋아요 <span className={`${activeTab === 1 ? 'text-[#411A90]' : 'text-gray-500'} font-bold ml-1`}>{likedPosts.length}</span>
             </button>
-            <button className={`w-1/3 p-2 text-left text-lg ${activeTab === 2 ? 'text-[#411A90]' : 'text-gray-600'}`} onClick={() => setActiveTab(2)}>
-              내 게시글 <span className={`${activeTab === 2 ? 'text-[#411A90]' : 'text-gray-500'} font-bold`}>{myPosts.length}</span>
+            <button className={`w-1/3 p-2 text-center text-base ${activeTab === 2 ? 'text-[#411A90]' : 'text-gray-600'}`} onClick={() => setActiveTab(2)}>
+              내 게시글 <span className={`${activeTab === 2 ? 'text-[#411A90]' : 'text-gray-500'} font-bold ml-1`}>{myPosts.length}</span>
             </button>
-            <button className={`w-1/3 p-2 text-left text-lg ${activeTab === 3 ? 'text-[#411A90]' : 'text-gray-600'}`} onClick={() => setActiveTab(3)}>
-              추천 일정 <span className={`${activeTab === 3 ? 'text-[#411A90]' : 'text-gray-500'} font-bold`}>{recommendedSchedules.length}</span>
+            <button className={`w-1/3 p-2 text-center text-base ${activeTab === 3 ? 'text-[#411A90]' : 'text-gray-600'}`} onClick={() => setActiveTab(3)}>
+              추천 일정 <span className={`${activeTab === 3 ? 'text-[#411A90]' : 'text-gray-500'} font-bold ml-1`}>{recommendedSchedules.length}</span>
             </button>
           </div>
         </div>
@@ -119,7 +118,6 @@ export default function MyPage() {
       </div>
 
       <div className="flex justify-center items-center w-full mt-7">
-        {/* Adjusted margin-top to lift the button slightly */}
         <button onClick={handleDeleteAccount} className="text-black text-lg font-semibold underline">
           계정 삭제하기
         </button>
