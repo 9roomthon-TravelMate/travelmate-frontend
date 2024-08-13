@@ -60,7 +60,7 @@ export default function RegionPage() {
         </h2>
 
         <div className='flex flex-col lg:flex-row lg:justify-between items-center'>
-          <div className='flex flex-col w-full lg:w-auto'>
+          <div className='flex flex-col w-full'>
             <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-7 gap-8 mb-4'>
               {regions.map((region) => (
                 <button

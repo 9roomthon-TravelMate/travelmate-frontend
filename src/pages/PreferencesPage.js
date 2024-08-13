@@ -48,22 +48,22 @@ const questions = [
   },
   {
     question: '5. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
-    option1: '많은 사람들에게<br />인기 있는 랜드마크에<br /> 가보고 싶어',
-    option7: '사람들에게 <br />잘 알려지지 않은<br /> 나만의 장소를 찾고 싶어',
+    option1: '많은 사람들에게<br />인기 있는 랜드마크에 가보고 싶어',
+    option7: '사람들에게 잘 알려지지<br /> 않은 나만의 장소를 찾고 싶어',
     imageLeft: landmark,
     imageRight: newthing,
   },
   {
     question: '6. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
-    option1: '버려지는 시간이 아까워!<br />여행 계획은 철저하게',
-    option7: '흘러가는대로 즐기는 거지<br />즉흥 여행!!',
+    option1: '버려지는 시간이 아까워<br />여행 계획은 철저하게!',
+    option7: '흘러가는대로 <br />즐기는 거지~ 즉흥 여행!',
     imageLeft: plan,
     imageRight: improvise,
   },
   {
     question: '7. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
     option1: '인생 사진은 건져야지!<br />남는 건 사진 뿐',
-    option7: '사진은 별로 안중요해.<br />즐거우면 된 거야!',
+    option7: '사진은 별로 안중요해<br />즐거우면 된 거야!',
     imageLeft: photo,
     imageRight: eyes,
   },
@@ -221,13 +221,13 @@ export default function PreferencesSurveyPage() {
             <>
               <div className='flex justify-between items-center mb-12'>
                 <span
-                  className='w-1/3 text-center text-3xl text-black'
+                  className='w-2/3 text-center text-3xl text-black'
                   dangerouslySetInnerHTML={{
                     __html: questions[currentQuestion].option1,
                   }}
                 />
                 <span
-                  className='w-1/3 text-center text-3xl text-black'
+                  className='w-2/3 text-center text-3xl text-black'
                   dangerouslySetInnerHTML={{
                     __html: questions[currentQuestion].option7,
                   }}
