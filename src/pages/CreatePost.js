@@ -4,6 +4,7 @@ import './css/CreatePost.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
+
 export default function CreatePost() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
