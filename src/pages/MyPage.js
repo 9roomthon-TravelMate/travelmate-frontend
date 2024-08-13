@@ -103,8 +103,12 @@ export default function MyPage() {
             <div className="h-96 overflow-y-auto">
               <div className="flex flex-col gap-4">
                 {recommendedSchedules.map((schedule, index) => (
-                  <div key={index} className="flex items-center p-0 rounded-lg shadow-md">
-                    <img src={`${API_BASE_URL}/images?filename=${encodeFilename(schedule.mainThumbnailUrl)}`} alt={`Thumbnail ${index}`} className="w-32 h-32 object-cover mr-4" />
+                  <div key={index} className="flex items-center p-4 rounded-lg shadow-md">
+                    <img 
+                      src={schedule.mainThumbnailUrl || 'placeholder-image-url.jpg'} 
+                      alt={`Thumbnail ${index}`} 
+                      className="w-32 h-32 object-cover rounded-lg mr-4" 
+                    />
                     <div>
                       <h3 className="text-lg font-semibold">{schedule.name}</h3>
                       <p className="text-gray-700">{schedule.address}</p>
