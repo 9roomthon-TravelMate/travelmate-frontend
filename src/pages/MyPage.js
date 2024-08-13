@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useUser from '../hooks/useUser';
-import { deleteAccount, fetchMyPosts, fetchLikedPosts, fetchRecommendedSchedules } from '../utils/api';
+import { deleteAccount, fetchMyPosts, fetchLikedPosts, fetchRecommendedSchedules, deletePost } from '../utils/api';
+
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export default function MyPage() {
@@ -35,6 +36,22 @@ export default function MyPage() {
     }
   };
 
+  const handleDeletePost = async (postId) => {
+    if (window.confirm('이 게시물을 삭제하시겠습니까?')) {
+      try {
+        await deletePost(postId); // 게시물 삭제 API 호출
+        // 삭제 후 상태 갱신
+        if (activeTab === 1) {
+          setLikedPosts(likedPosts.filter(post => post.id !== postId));
+        } else if (activeTab === 2) {
+          setMyPosts(myPosts.filter(post => post.id !== postId));
+        }
+      } catch (error) {
+        console.error('게시물 삭제 실패', error);
+      }
+    }
+  };
+
   const getTabBackgroundStyle = () => {
     const width = 100 / 3;
     switch (activeTab) {
@@ -54,7 +71,6 @@ export default function MyPage() {
   };
 
   const sortedAndGroupedPosts = (posts) => {
-    // ID 기준으로 내림차순 정렬
     return posts.sort((a, b) => b.id - a.id);
   };
 
@@ -85,18 +101,22 @@ export default function MyPage() {
           {activeTab === 1 && (
             <div className="h-96 overflow-y-auto">
               {sortedAndGroupedPosts(likedPosts).map((post, postIndex) => (
-                <div key={postIndex} className="mb-6">
-                  <div className="flex items-start p-4 rounded-lg shadow-md"> {/* 왼쪽 위 정렬 */}
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-left">{post.title}</h3> {/* 왼쪽 정렬 */}
-                      <p className="text-gray-700 text-left">{post.content}</p> {/* 왼쪽 정렬 */}
-                    </div>
-                    <img 
-                      src={`${API_BASE_URL}/images?filename=${encodeFilename(post.imageUri)}`} 
-                      alt={`Liked Post ${post.id}`} 
-                      className="w-32 h-32 object-cover rounded-lg ml-4" 
-                    />
+                <div key={postIndex} className="mb-6 p-4 bg-white shadow-md rounded-lg flex items-start relative">
+                  <img 
+                    src={`${API_BASE_URL}/images?filename=${encodeFilename(post.imageUri)}`} 
+                    alt={`Liked Post ${post.id}`} 
+                    className="w-32 h-32 object-cover rounded-lg mr-4" 
+                  />
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold">{post.title}</h3>
+                    <p className="text-gray-700">{post.content}</p>
                   </div>
+                  <button 
+                    onClick={() => handleDeletePost(post.id)} 
+                    className="text-red-500 text-sm absolute bottom-4 right-4"
+                  >
+                    삭제
+                  </button>
                 </div>
               ))}
             </div>
@@ -105,18 +125,22 @@ export default function MyPage() {
           {activeTab === 2 && (
             <div className="h-96 overflow-y-auto">
               {sortedAndGroupedPosts(myPosts).map((post, postIndex) => (
-                <div key={postIndex} className="mb-6">
-                  <div className="flex items-start p-4 rounded-lg shadow-md"> {/* 왼쪽 위 정렬 */}
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-left">{post.title}</h3> {/* 왼쪽 정렬 */}
-                      <p className="text-gray-700 text-left">{post.content}</p> {/* 왼쪽 정렬 */}
-                    </div>
-                    <img 
-                      src={`${API_BASE_URL}/images?filename=${encodeFilename(post.imageUri)}`} 
-                      alt={`My Post ${post.id}`} 
-                      className="w-32 h-32 object-cover rounded-lg ml-4" 
-                    />
+                <div key={postIndex} className="mb-6 p-4 bg-white shadow-md rounded-lg flex items-start relative">
+                  <img 
+                    src={`${API_BASE_URL}/images?filename=${encodeFilename(post.imageUri)}`} 
+                    alt={`My Post ${post.id}`} 
+                    className="w-32 h-32 object-cover rounded-lg mr-4" 
+                  />
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold">{post.title}</h3>
+                    <p className="text-gray-700">{post.content}</p>
                   </div>
+                  <button 
+                    onClick={() => handleDeletePost(post.id)} 
+                    className="text-red-500 text-sm absolute bottom-4 right-4"
+                  >
+                    삭제
+                  </button>
                 </div>
               ))}
             </div>
