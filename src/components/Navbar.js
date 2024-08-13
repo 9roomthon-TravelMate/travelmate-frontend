@@ -39,7 +39,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className='fixed top-0 left-0 w-full bg-white flex justify-between border-b border-gray-300 p-2 h-16'>
+    <header className='fixed z-50 top-0 left-0 w-full bg-white flex justify-between border-b border-gray-300 p-2 h-16'>
       <Link to='/' className='flex items-center'>
         <img
           src={travel_mate_logo}
