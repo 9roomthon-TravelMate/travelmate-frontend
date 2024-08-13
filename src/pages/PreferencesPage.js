@@ -178,47 +178,63 @@ export default function PreferencesSurveyPage() {
       }}
     >
       <div className='container mx-auto p-4 mt-12'>
-        <h1 className='text-xl mb-4 mt-12' style={{ color: '#7E7C7C' }}>
+        <h1 className='text-2xl mb-8 text-left' style={{ color: '#7E7C7C' }}>
           마지막으로 당신의 취향을 알려주세요!
         </h1>
-        <h2 className='text-2xl mb-36' style={{ color: '#000' }}>
+        <h2 className='text-3xl mb-36 text-left'>
           {questions[currentQuestion].question}
         </h2>
 
         <div
           className='flex flex-col justify-between'
-          style={{ minHeight: '200px' }}
+          style={{ minHeight: '300px' }}
         >
           {currentQuestion < 7 ? (
-            <div className='flex justify-between items-center mb-8'>
-              <span
-                className='flex-shrink-0 w-1/4 text-center text-lg text-black'
-                style={{ whiteSpace: 'pre-line' }}
-              >
-                {questions[currentQuestion].option1}
-              </span>
-              <div className='flex justify-center gap-4 w-2/4'>
-                {[...Array(7)].map((_, index) => (
-                  <button
-                    key={index + 1}
-                    onClick={() => handleSelectAnswer(index + 1)}
-                    className={`py-2 px-4 rounded-full ${
-                      selectedAnswer === index + 1
-                        ? 'bg-purple-500 text-white'
-                        : 'bg-gray-200 text-gray-700'
-                    }`}
-                  >
-                    {index + 1}
-                  </button>
-                ))}
+            <>
+              <div className='flex justify-between items-center mb-4'>
+                <span
+                  className='w-1/4 text-center text-3xl text-black'
+                  dangerouslySetInnerHTML={{
+                    __html: questions[currentQuestion].option1,
+                  }}
+                />
+                <span
+                  className='w-1/4 text-center text-3xl text-black'
+                  dangerouslySetInnerHTML={{
+                    __html: questions[currentQuestion].option7,
+                  }}
+                />
               </div>
-              <span
-                className='flex-shrink-0 w-1/4 text-center text-lg text-black'
-                style={{ whiteSpace: 'pre-line' }}
-              >
-                {questions[currentQuestion].option7}
-              </span>
-            </div>
+              <div className='flex flex-col items-center mb-8'>
+                <div className='flex justify-center w-full items-center gap-16'>
+                  <img
+                    src={questions[currentQuestion].imageLeft}
+                    alt='Character Left'
+                    className='w-1/4 max-w-[150px]'
+                  />
+                  <div className='flex gap-4 justify-center'>
+                    {[...Array(7)].map((_, index) => (
+                      <button
+                        key={index + 1}
+                        onClick={() => handleSelectAnswer(index + 1)}
+                        className={`py-4 px-8 rounded-full text-3xl ${
+                          selectedAnswer === index + 1
+                            ? 'bg-[#a8e6ff] text-black'
+                            : 'bg-gray-200 text-gray-700'
+                        }`}
+                      >
+                        {index + 1}
+                      </button>
+                    ))}
+                  </div>
+                  <img
+                    src={questions[currentQuestion].imageRight}
+                    alt='Character Right'
+                    className='w-1/4 max-w-[150px] '
+                  />
+                </div>
+              </div>
+            </>
           ) : (
             <div className='flex justify-center items-center mb-8'>
               <div className='flex gap-4'>
@@ -226,9 +242,9 @@ export default function PreferencesSurveyPage() {
                   <button
                     key={index}
                     onClick={() => handleSelectAnswer(option)}
-                    className={`py-2 px-4 rounded-full ${
+                    className={`py-4 px-8 rounded-full text-3xl ${
                       selectedAnswer === option
-                        ? 'bg-purple-500 text-white'
+                        ? 'bg-[#a8e6ff] text-black'
                         : 'bg-gray-200 text-gray-700'
                     }`}
                   >
@@ -244,17 +260,17 @@ export default function PreferencesSurveyPage() {
               onClick={() =>
                 setCurrentQuestion(Math.max(0, currentQuestion - 1))
               }
-              className='bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded-full'
+              className='bg-gray-300 hover:bg-gray-500 text-black py-4 px-8 rounded-full text-3xl'
               disabled={currentQuestion === 0}
             >
               이전
             </button>
             <button
               onClick={handleNext}
-              className={`py-2 px-4 rounded-full ${
+              className={`py-4 px-8 rounded-full text-3xl ${
                 selectedAnswer !== null
-                  ? 'bg-purple-500 hover:bg-purple-700 text-white'
-                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  ? 'bg-[#a8e6ff] hover:bg-[#7eccff] text-black'
+                  : 'bg-gray-300 text-black cursor-not-allowed'
               }`}
               disabled={selectedAnswer === null}
             >

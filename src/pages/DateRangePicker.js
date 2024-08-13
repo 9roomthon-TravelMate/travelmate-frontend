@@ -40,13 +40,15 @@ export default function TravelPeriodPage() {
       className='p-4'
     >
       <div className='container mx-auto p-4 mt-12'>
-        <h1 className='text-2xl mb-12 mt-12'>
+        <h1 className='text-3xl mb-12'>
           여행을 떠날 일자와 돌아올 일자를 선택해 주세요.
         </h1>
         <div className='flex flex-col lg:flex-row items-center mb-8'>
           <div className='w-full lg:w-2/3 mb-8 lg:mb-0'>
             <div className='bg-white p-6 rounded-lg shadow-lg flex flex-col justify-between h-full'>
-              <label className='block text-lg mb-4'>날짜를 선택해주세요.</label>
+              <label className='block text-2lg mb-4'>
+                날짜를 선택해주세요.
+              </label>
               <DatePicker
                 locale='ko'
                 selected={startDate}
