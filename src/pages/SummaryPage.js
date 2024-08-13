@@ -36,7 +36,13 @@ export default function SummaryPage() {
   };
 
   return (
-    <div className='container mx-auto p-4'>
+    <div
+      className='container mx-auto p-4'
+      style={{
+        backgroundColor: '#f2f2f2',
+        minHeight: '100vh',
+      }}
+    >
       <div className='mb-8 mt-8'>
         <h1 className='text-lg mb-4 mt-12' style={{ color: '#7E7C7C' }}>
           당신의 취향에 딱 맞는 장소들을 찾았습니다!
@@ -109,13 +115,16 @@ export default function SummaryPage() {
           </ul>
 
           {selectedPlaces.length > 0 && (
-            <button
-              className='mt-8 bg-blue-500 text-white py-2 px-4 rounded'
-              style={{ color: '#411A90' }}
-              onClick={handleSave}
-            >
-              완료
-            </button>
+            <div className='flex justify-end'>
+              {' '}
+              {/* 완료 버튼을 오른쪽에 배치 */}
+              <button
+                className='mt-8 bg-gray-200 text-black py-2 px-4 rounded'
+                onClick={handleSave}
+              >
+                완료
+              </button>
+            </div>
           )}
         </div>
       </div>
