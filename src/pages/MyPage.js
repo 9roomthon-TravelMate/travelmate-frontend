@@ -53,12 +53,17 @@ export default function MyPage() {
     return encodeURIComponent(filename);
   };
 
+  const sortedAndGroupedPosts = (posts) => {
+    // ID 기준으로 내림차순 정렬
+    return posts.sort((a, b) => b.id - a.id);
+  };
+
   return (
-    <div className="flex flex-col items-center bg-gray-100 min-h-screen overflow-hidden pt-20">
-      <div className="bg-white w-3/5 p-6 shadow-lg rounded-lg flex flex-col" style={{ minHeight: 'calc(100vh - 5rem)' }}>
-        <div className="flex flex-col items-center mb-8">
+    <div className="bg-gray-100 min-h-screen pt-20">
+      <div className="bg-white w-3/5 p-6 shadow-lg rounded-lg flex flex-col" style={{ minHeight: 'calc(100vh - 5rem)', marginLeft: 'auto', marginRight: 'auto' }}>
+        <div className="flex flex-col items-start mb-8"> {/* 왼쪽 정렬 */}
           <img src={user?.profile_image || 'default_profile_image_url_here'} alt="Profile" className="w-20 h-20 rounded-full mb-4" />
-          <h1 className="text-lg text-center">{user?.nickname || '사용자 이름'}</h1>
+          <h1 className="text-lg text-left">{user?.nickname || '사용자 이름'}</h1> {/* 왼쪽 정렬 */}
         </div>
 
         <div className="relative flex border-b border-gray-300 mb-4">
@@ -79,26 +84,44 @@ export default function MyPage() {
         <div className="flex-1 mb-4">
           {activeTab === 1 && (
             <div className="h-96 overflow-y-auto">
-              <div className="grid grid-cols-2 gap-0">
-                {likedPosts.map((post, index) => (
-                  <div key={index} className="w-full aspect-square flex items-center justify-center">
-                    <img src={`${API_BASE_URL}/images?filename=${encodeFilename(post.imageUri)}`} alt={`Liked Post ${post.id}`} className="object-cover h-full w-full" />
+              {sortedAndGroupedPosts(likedPosts).map((post, postIndex) => (
+                <div key={postIndex} className="mb-6">
+                  <div className="flex items-start p-4 rounded-lg shadow-md"> {/* 왼쪽 위 정렬 */}
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-left">{post.title}</h3> {/* 왼쪽 정렬 */}
+                      <p className="text-gray-700 text-left">{post.content}</p> {/* 왼쪽 정렬 */}
+                    </div>
+                    <img 
+                      src={`${API_BASE_URL}/images?filename=${encodeFilename(post.imageUri)}`} 
+                      alt={`Liked Post ${post.id}`} 
+                      className="w-32 h-32 object-cover rounded-lg ml-4" 
+                    />
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           )}
+
           {activeTab === 2 && (
             <div className="h-96 overflow-y-auto">
-              <div className="grid grid-cols-2 gap-0">
-                {myPosts.map((post, index) => (
-                  <div key={index} className="w-full aspect-square flex items-center justify-center">
-                    <img src={`${API_BASE_URL}/images?filename=${encodeFilename(post.imageUri)}`} alt={`My Post ${post.id}`} className="object-cover h-full w-full" />
+              {sortedAndGroupedPosts(myPosts).map((post, postIndex) => (
+                <div key={postIndex} className="mb-6">
+                  <div className="flex items-start p-4 rounded-lg shadow-md"> {/* 왼쪽 위 정렬 */}
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-left">{post.title}</h3> {/* 왼쪽 정렬 */}
+                      <p className="text-gray-700 text-left">{post.content}</p> {/* 왼쪽 정렬 */}
+                    </div>
+                    <img 
+                      src={`${API_BASE_URL}/images?filename=${encodeFilename(post.imageUri)}`} 
+                      alt={`My Post ${post.id}`} 
+                      className="w-32 h-32 object-cover rounded-lg ml-4" 
+                    />
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           )}
+
           {activeTab === 3 && (
             <div className="h-96 overflow-y-auto">
               <div className="flex flex-col gap-4">
