@@ -2,42 +2,70 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuthStore from '../context/useAuthStore';
 import { sendSurveyData } from '../utils/api';
+import nature from '../assets/images/nature.png';
+import city from '../assets/images/city.png';
+import adventure from '../assets/images/adventure.png';
+import comfortable from '../assets/images/comfortable.png';
+import hotel from '../assets/images/hotel.png';
+import tent from '../assets/images/tent.png';
+import rest from '../assets/images/rest.png';
+import different from '../assets/images/different.png';
+import landmark from '../assets/images/landmark.png';
+import newthing from '../assets/images/newthing.png';
+import plan from '../assets/images/plan.png';
+import improvise from '../assets/images/improvise.png';
+import photo from '../assets/images/photo.png';
+import eyeslook from '../assets/images/eyeslook.png';
 
 const questions = [
   {
     question: '1. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
-    option1: '자연 속에서\n 여유롭게 산책하고 싶어',
-    option7: '화려한 도시의 야경을 보러 갈래',
+    option1: '자연 속에서<br />여유롭게 산책하고 싶어',
+    option7: '화려한 도시의<br /> 야경을 보러 갈래',
+    imageLeft: nature,
+    imageRight: city,
   },
   {
     question: '2. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
-    option1: '새로운 곳을 찾아 모험을 떠날래',
+    option1: '새로운 곳을<br /> 찾아 모험을 떠날래',
     option7: '익숙한 편안함이 좋아',
+    imageLeft: adventure,
+    imageRight: comfortable,
   },
   {
     question: '3. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
-    option1: '비싸더라도 숙소는 편해야지!',
-    option7: '잠만 자는 건데\n 저렴한 숙소도 괜찮아~',
+    option1: '비싸더라도 <br />숙소는 편해야지!',
+    option7: '잠만 자는 건데<br />저렴한 숙소도 괜찮아~',
+    imageLeft: hotel,
+    imageRight: tent,
   },
   {
     question: '4. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
     option1: '여행은 쉬러 가는 거지~',
-    option7: '여행은 색다른 것을 즐기는 거지!',
+    option7: '여행은 <br />색다른 것을 즐기는 거지!',
+    imageLeft: rest,
+    imageRight: different,
   },
   {
     question: '5. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
-    option1: '많은 사람들에게 \n인기 있는 랜드마크에 가보고 싶어',
-    option7: '사람들에게 잘 알려지지 \n않은 나만의 장소를 찾고 싶어',
+    option1: '많은 사람들에게<br />인기 있는 랜드마크에<br /> 가보고 싶어',
+    option7: '사람들에게 <br />잘 알려지지 않은<br /> 나만의 장소를 찾고 싶어',
+    imageLeft: landmark,
+    imageRight: newthing,
   },
   {
     question: '6. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
-    option1: '버려지는 시간이 아까워!\n 여행 계획은 철저하게',
-    option7: '흘러가는대로 즐기는 거지~\n 즉흥 여행!',
+    option1: '버려지는 시간이 아까워!<br />여행 계획은 철저하게',
+    option7: '흘러가는대로 즐기는 거지<br />즉흥 여행!!',
+    imageLeft: plan,
+    imageRight: improvise,
   },
   {
     question: '7. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
-    option1: '인생 사진은 건져야지!\n 남는 건 사진 뿐',
-    option7: '사진은 별로 안중요해.\n 즐거우면 된 거야!',
+    option1: '인생 사진은 건져야지!<br />남는 건 사진 뿐',
+    option7: '사진은 별로 안중요해.<br />즐거우면 된 거야!',
+    imageLeft: photo,
+    imageRight: eyeslook,
   },
   {
     question: '8. 함께 여행하는 일행이 있나요?',
