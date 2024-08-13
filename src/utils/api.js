@@ -110,12 +110,15 @@ export const deleteUser = async () => {
   );
 };
 
-export const fetchTourSpotReviewList = async(tourSpotId, query) => {
+export const fetchTourSpotReviewList = async (tourSpotId, query) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/tourspots/${tourSpotId}/reviews`, {
-      withCredentials: true,
-      params: query,
-    });
+    const response = await axios.get(
+      `${API_BASE_URL}/tourspots/${tourSpotId}/reviews`,
+      {
+        withCredentials: true,
+        params: query,
+      }
+    );
     return response.data;
   } catch (error) {
     throw error.response
@@ -124,11 +127,14 @@ export const fetchTourSpotReviewList = async(tourSpotId, query) => {
   }
 };
 
-export const fetchMyTourSpotReview = async(tourSpotId) => {
+export const fetchMyTourSpotReview = async (tourSpotId) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/tourspots/${tourSpotId}/reviews/my`, {
-      withCredentials: true,
-    });
+    const response = await axios.get(
+      `${API_BASE_URL}/tourspots/${tourSpotId}/reviews/my`,
+      {
+        withCredentials: true,
+      }
+    );
     return response.data;
   } catch (error) {
     throw error.response
@@ -137,11 +143,15 @@ export const fetchMyTourSpotReview = async(tourSpotId) => {
   }
 };
 
-export const postTourSpotReview = async(tourSpotId, review) => {
+export const postTourSpotReview = async (tourSpotId, review) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/tourspots/${tourSpotId}/reviews`, review, {
-      withCredentials: true,
-    });
+    const response = await axios.post(
+      `${API_BASE_URL}/tourspots/${tourSpotId}/reviews`,
+      review,
+      {
+        withCredentials: true,
+      }
+    );
     return response.data;
   } catch (error) {
     throw error.response
@@ -150,11 +160,15 @@ export const postTourSpotReview = async(tourSpotId, review) => {
   }
 };
 
-export const updateTourSpotReview = async(reviewId, review) => {
+export const updateTourSpotReview = async (reviewId, review) => {
   try {
-    const response = await axios.put(`${API_BASE_URL}/tourspot/reviews/${reviewId}`, review, {
-      withCredentials: true,
-    });
+    const response = await axios.put(
+      `${API_BASE_URL}/tourspot/reviews/${reviewId}`,
+      review,
+      {
+        withCredentials: true,
+      }
+    );
     return response.data;
   } catch (error) {
     throw error.response
@@ -163,11 +177,14 @@ export const updateTourSpotReview = async(reviewId, review) => {
   }
 };
 
-export const deleteTourSpotReview = async(reviewId) => {
+export const deleteTourSpotReview = async (reviewId) => {
   try {
-    const response = await axios.delete(`${API_BASE_URL}/tourspot/reviews/${reviewId}`, {
-      withCredentials: true,
-    });
+    const response = await axios.delete(
+      `${API_BASE_URL}/tourspot/reviews/${reviewId}`,
+      {
+        withCredentials: true,
+      }
+    );
     return response.data;
   } catch (error) {
     throw error.response
@@ -200,13 +217,15 @@ export const sendSurveyData = async (dataToSend) => {
   }
 };
 
-
 export const saveVisitedPlaces = async (contentIds) => {
   try {
     const response = await axios.post(
       `${API_BASE_URL}/recommend/save-visited`,
       {
         contentIds,
+      },
+      {
+        withCredentials: true,
       }
     );
 
@@ -227,9 +246,9 @@ export const fetchLikedPosts = async () => {
     const response = await axios.get(`${API_BASE_URL}/mypage/likes`, {
       withCredentials: true,
     });
-    return response.data.map(post => ({
+    return response.data.map((post) => ({
       id: post.id,
-      imageUri: post.imageUri
+      imageUri: post.imageUri,
     }));
   } catch (error) {
     throw error.response
@@ -244,9 +263,9 @@ export const fetchMyPosts = async () => {
     const response = await axios.get(`${API_BASE_URL}/mypage/posts`, {
       withCredentials: true,
     });
-    return response.data.map(post => ({
+    return response.data.map((post) => ({
       id: post.id,
-      imageUri: post.imageUri
+      imageUri: post.imageUri,
     }));
   } catch (error) {
     throw error.response
@@ -261,10 +280,10 @@ export const fetchRecommendedSchedules = async () => {
     const response = await axios.get(`${API_BASE_URL}/mypage/recommends`, {
       withCredentials: true,
     });
-    return response.data.map(schedule => ({
+    return response.data.map((schedule) => ({
       name: schedule.name,
       address: schedule.address,
-      mainThumbnailUrl: schedule.mainThumbnailUrl // mainThumbnailUrl 필드를 포함합니다
+      mainThumbnailUrl: schedule.mainThumbnailUrl, // mainThumbnailUrl 필드를 포함합니다
     }));
   } catch (error) {
     throw error.response
@@ -283,4 +302,3 @@ export const deleteAccount = async () => {
     console.error('회원탈퇴 중 에러 발생:', error);
   }
 };
-
