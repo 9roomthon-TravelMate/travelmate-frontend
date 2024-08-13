@@ -15,7 +15,7 @@ import newthing from '../assets/images/newthing.png';
 import plan from '../assets/images/plan.png';
 import improvise from '../assets/images/improvise.png';
 import photo from '../assets/images/photo.png';
-import eyeslook from '../assets/images/eyeslook.png';
+import eyes from '../assets/images/eyes.png';
 
 const questions = [
   {
@@ -65,7 +65,7 @@ const questions = [
     option1: '인생 사진은 건져야지!<br />남는 건 사진 뿐',
     option7: '사진은 별로 안중요해.<br />즐거우면 된 거야!',
     imageLeft: photo,
-    imageRight: eyeslook,
+    imageRight: eyes,
   },
   {
     question: '8. 함께 여행하는 일행이 있나요?',
