@@ -53,6 +53,11 @@ export default function MyPage() {
     return encodeURIComponent(filename);
   };
 
+  const sortedAndGroupedPosts = (posts) => {
+    // ID 기준으로 내림차순 정렬
+    return posts.sort((a, b) => b.id - a.id);
+  };
+
   return (
     <div className="flex flex-col items-center bg-gray-100 min-h-screen overflow-hidden pt-20">
       <div className="bg-white w-3/5 p-6 shadow-lg rounded-lg flex flex-col" style={{ minHeight: 'calc(100vh - 5rem)' }}>
@@ -79,32 +84,54 @@ export default function MyPage() {
         <div className="flex-1 mb-4">
           {activeTab === 1 && (
             <div className="h-96 overflow-y-auto">
-              <div className="grid grid-cols-2 gap-0">
-                {likedPosts.map((post, index) => (
-                  <div key={index} className="w-full aspect-square flex items-center justify-center">
-                    <img src={`${API_BASE_URL}/images?filename=${encodeFilename(post.imageUri)}`} alt={`Liked Post ${post.id}`} className="object-cover h-full w-full" />
+              {sortedAndGroupedPosts(likedPosts).map((post, postIndex) => (
+                <div key={postIndex} className="mb-6">
+                  <div className="flex items-start p-4 rounded-lg shadow-md"> {/* 왼쪽 위 정렬 */}
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-left">{post.title}</h3> {/* 왼쪽 정렬 */}
+                      <p className="text-gray-700 text-left">{post.content}</p> {/* 왼쪽 정렬 */}
+                    </div>
+                    <img 
+                      src={`${API_BASE_URL}/images?filename=${encodeFilename(post.imageUri)}`} 
+                      alt={`Liked Post ${post.id}`} 
+                      className="w-32 h-32 object-cover rounded-lg ml-4" 
+                    />
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           )}
+
           {activeTab === 2 && (
             <div className="h-96 overflow-y-auto">
-              <div className="grid grid-cols-2 gap-0">
-                {myPosts.map((post, index) => (
-                  <div key={index} className="w-full aspect-square flex items-center justify-center">
-                    <img src={`${API_BASE_URL}/images?filename=${encodeFilename(post.imageUri)}`} alt={`My Post ${post.id}`} className="object-cover h-full w-full" />
+              {sortedAndGroupedPosts(myPosts).map((post, postIndex) => (
+                <div key={postIndex} className="mb-6">
+                  <div className="flex items-start p-4 rounded-lg shadow-md"> {/* 왼쪽 위 정렬 */}
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-left">{post.title}</h3> {/* 왼쪽 정렬 */}
+                      <p className="text-gray-700 text-left">{post.content}</p> {/* 왼쪽 정렬 */}
+                    </div>
+                    <img 
+                      src={`${API_BASE_URL}/images?filename=${encodeFilename(post.imageUri)}`} 
+                      alt={`My Post ${post.id}`} 
+                      className="w-32 h-32 object-cover rounded-lg ml-4" 
+                    />
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           )}
+
           {activeTab === 3 && (
             <div className="h-96 overflow-y-auto">
               <div className="flex flex-col gap-4">
                 {recommendedSchedules.map((schedule, index) => (
-                  <div key={index} className="flex items-center p-0 rounded-lg shadow-md">
-                    <img src={`${API_BASE_URL}/images?filename=${encodeFilename(schedule.mainThumbnailUrl)}`} alt={`Thumbnail ${index}`} className="w-32 h-32 object-cover mr-4" />
+                  <div key={index} className="flex items-center p-4 rounded-lg shadow-md">
+                    <img 
+                      src={schedule.mainThumbnailUrl || 'placeholder-image-url.jpg'} 
+                      alt={`Thumbnail ${index}`} 
+                      className="w-32 h-32 object-cover rounded-lg mr-4" 
+                    />
                     <div>
                       <h3 className="text-lg font-semibold">{schedule.name}</h3>
                       <p className="text-gray-700">{schedule.address}</p>

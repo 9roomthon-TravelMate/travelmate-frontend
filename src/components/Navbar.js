@@ -39,6 +39,7 @@ export default function Navbar() {
   };
 
   return (
+
     <header className='flex justify-between border-b border-gray-300 p-2 h-24'>
       <Link to='/' className='flex items-center'>
         <img

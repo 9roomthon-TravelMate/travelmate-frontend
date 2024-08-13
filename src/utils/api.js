@@ -246,9 +246,11 @@ export const fetchLikedPosts = async () => {
     const response = await axios.get(`${API_BASE_URL}/mypage/likes`, {
       withCredentials: true,
     });
-    return response.data.map((post) => ({
+    return response.data.map(post => ({
       id: post.id,
-      imageUri: post.imageUri,
+      title: post.title,          // title 추가
+      content: post.content,      // content 추가
+      imageUri: post.imageUri
     }));
   } catch (error) {
     throw error.response
@@ -263,9 +265,11 @@ export const fetchMyPosts = async () => {
     const response = await axios.get(`${API_BASE_URL}/mypage/posts`, {
       withCredentials: true,
     });
-    return response.data.map((post) => ({
+    return response.data.map(post => ({
       id: post.id,
-      imageUri: post.imageUri,
+      title: post.title,          // title 추가
+      content: post.content,      // content 추가
+      imageUri: post.imageUri
     }));
   } catch (error) {
     throw error.response
