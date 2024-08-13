@@ -42,6 +42,9 @@ export default function TravelPeriodPage() {
       className='p-4'
     >
       <div className='container mx-auto p-4 mt-12'>
+        <h1 className='text-2xl mb-8' style={{ color: '#7E7C7C' }}>
+          여행 일정을 정하세요!
+        </h1>
         <h1 className='text-3xl mb-12'>
           여행을 떠날 일자와 돌아올 일자를 선택해 주세요.
         </h1>
