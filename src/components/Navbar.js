@@ -39,17 +39,16 @@ export default function Navbar() {
   };
 
   return (
-
     <header className='flex justify-between border-b border-gray-300 p-2 h-24'>
       <Link to='/' className='flex items-center'>
         <img
           src={travel_mate_logo}
           alt='Travel Mate'
-          className='ml-4 w-72 h-auto'
+          className='ml-4 w-48 h-auto'
         />
       </Link>
       <nav
-        className='flex items-center gap-8 font-base text-3xl '
+        className='flex items-center gap-6 font-base text-2xl '
         style={{ color: '#696969' }}
       >
         <Link to='/regionpage'>일정 추천</Link>
