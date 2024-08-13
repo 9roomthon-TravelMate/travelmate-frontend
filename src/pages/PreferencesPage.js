@@ -219,15 +219,15 @@ export default function PreferencesSurveyPage() {
         >
           {currentQuestion < 7 ? (
             <>
-              <div className='flex justify-between items-center mb-4'>
+              <div className='flex justify-between items-center mb-12'>
                 <span
-                  className='w-1/4 text-center text-3xl text-black'
+                  className='w-1/3 text-center text-3xl text-black'
                   dangerouslySetInnerHTML={{
                     __html: questions[currentQuestion].option1,
                   }}
                 />
                 <span
-                  className='w-1/4 text-center text-3xl text-black'
+                  className='w-1/3 text-center text-3xl text-black'
                   dangerouslySetInnerHTML={{
                     __html: questions[currentQuestion].option7,
                   }}
