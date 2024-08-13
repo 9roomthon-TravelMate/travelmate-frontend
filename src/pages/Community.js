@@ -47,21 +47,18 @@ export default function Community() {
   const handleCommentSubmit = async (postId) => {
     if (!newComments[postId]?.trim()) return; // 해당 게시글에 대한 댓글이 비어있는지 확인
 
+    const formData = new FormData();
     const content = newComments[postId];
     const commentDto = { content, postId };
-    const data = {
-        CommentDto: commentDto
-      };
+
+    formData.append('commentDto', JSON.stringify(commentDto));
 
     try {
         console.log("Sending comment to server:", commentDto);
 
         const response = await fetch(`${API_BASE_URL}/comment/create`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json', // JSON 데이터로 전송
-        },
-        body: JSON.stringify(data), // JSON 직렬화
+        body: formData, 
         credentials: 'include',
       });
 
