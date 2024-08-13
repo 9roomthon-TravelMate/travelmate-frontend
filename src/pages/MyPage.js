@@ -59,11 +59,11 @@ export default function MyPage() {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen pt-20">
-      <div className="bg-white w-3/5 p-6 shadow-lg rounded-lg flex flex-col" style={{ minHeight: 'calc(100vh - 5rem)', marginLeft: 'auto', marginRight: 'auto' }}>
-        <div className="flex flex-col items-start mb-8"> {/* 왼쪽 정렬 */}
+    <div className="flex flex-col items-center bg-gray-100 min-h-screen overflow-hidden pt-20">
+      <div className="bg-white w-3/5 p-6 shadow-lg rounded-lg flex flex-col" style={{ minHeight: 'calc(100vh - 5rem)' }}>
+        <div className="flex flex-col items-center mb-8">
           <img src={user?.profile_image || 'default_profile_image_url_here'} alt="Profile" className="w-20 h-20 rounded-full mb-4" />
-          <h1 className="text-lg text-left">{user?.nickname || '사용자 이름'}</h1> {/* 왼쪽 정렬 */}
+          <h1 className="text-lg text-center">{user?.nickname || '사용자 이름'}</h1>
         </div>
 
         <div className="relative flex border-b border-gray-300 mb-4">
