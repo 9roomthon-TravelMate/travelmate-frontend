@@ -14,6 +14,7 @@ export default function TravelPeriodPage() {
   const [startDate, endDate] = dateRange;
   const setTravelPeriod = useAuthStore((state) => state.setTravelPeriod);
   const navigate = useNavigate();
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
 
   const formatDate = (date) => {
     const year = date.getFullYear();
@@ -28,6 +29,7 @@ export default function TravelPeriodPage() {
         start: formatDate(startDate),
         end: formatDate(endDate),
       });
+      setIsButtonClicked(true);
       navigate('/preferencespage');
     } else {
       alert('여행 기간을 선택해주세요!');
@@ -95,8 +97,11 @@ export default function TravelPeriodPage() {
               <div className='flex justify-end mt-4'>
                 <button
                   onClick={handleNext}
-                  className='text-white py-3 px-6 rounded-lg'
-                  style={{ backgroundColor: '#411A90' }}
+                  className={`py-3 px-6 rounded-lg ${
+                    isButtonClicked
+                      ? 'bg-[#a8e6ff] text-black'
+                      : 'bg-gray-200 text-gray-700'
+                  }`}
                 >
                   다음
                 </button>
