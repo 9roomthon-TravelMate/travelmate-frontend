@@ -37,7 +37,7 @@ export default function SummaryPage() {
 
   return (
     <div
-      className='container mx-auto p-4'
+      className='w-full p-4'
       style={{
         backgroundColor: '#f2f2f2',
         minHeight: '100vh',
@@ -116,8 +116,6 @@ export default function SummaryPage() {
 
           {selectedPlaces.length > 0 && (
             <div className='flex justify-end'>
-              {' '}
-              {/* 완료 버튼을 오른쪽에 배치 */}
               <button
                 className='mt-8 bg-gray-200 text-black py-2 px-4 rounded'
                 onClick={handleSave}
