@@ -7,6 +7,7 @@ export default function RegionPage() {
   const [selectedRegion, setSelectedRegion] = useState('');
   const setRegion = useAuthStore((state) => state.setRegion);
   const navigate = useNavigate();
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
 
   const handleRegionClick = (region) => {
     setSelectedRegion(region);
@@ -15,6 +16,7 @@ export default function RegionPage() {
   const handleNext = () => {
     if (selectedRegion) {
       setRegion(selectedRegion);
+      setIsButtonClicked(true);
       navigate('/daterangepicker');
     } else {
       alert('여행 가고 싶은 지역을 선택해주세요!');
@@ -79,8 +81,11 @@ export default function RegionPage() {
             <div className='flex justify-end mt-4'>
               <button
                 onClick={handleNext}
-                className='text-white py-3 px-6 rounded-lg'
-                style={{ backgroundColor: '#411A90' }}
+                className={`py-3 px-6 rounded-lg ${
+                  isButtonClicked
+                    ? 'bg-[#a8e6ff] text-black'
+                    : 'bg-gray-200 text-black'
+                }`}
               >
                 다음
               </button>

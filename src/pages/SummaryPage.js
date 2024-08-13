@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { saveVisitedPlaces } from '../utils/api';
 
 export default function SummaryPage() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { places } = location.state || { places: [] };
   const [selectedPlaces, setSelectedPlaces] = useState([]);
 
@@ -28,6 +29,7 @@ export default function SummaryPage() {
       await saveVisitedPlaces(contentIds);
       alert('방문할 장소가 성공적으로 저장되었습니다.');
       setSelectedPlaces([]);
+      navigate('/');
     } catch (error) {
       alert('저장 중 문제가 발생했습니다.');
     }
@@ -54,24 +56,36 @@ export default function SummaryPage() {
           </h2>
           <ul className='grid grid-cols-1 gap-4'>
             {places.map((place, index) => (
-              <li key={index} className='border p-4 rounded-lg shadow-sm'>
-                <img
-                  src={place.mainThumbnailUrl || 'placeholder-image-url.jpg'}
-                  alt={place.name}
-                  className='w-full h-48 object-cover mb-4 rounded-lg'
-                />
-                <h2 className='text-lg font-bold mb-2'>{place.name}</h2>
-                <p className='text-gray-600'>{place.address}</p>
-                <label className='block mt-4'>
-                  <input
-                    type='checkbox'
-                    checked={selectedPlaces.some(
-                      (selected) => selected.contentId === place.contentId
-                    )}
-                    onChange={() => handleSelect(place)}
+              <li
+                key={index}
+                className='border p-4 rounded-lg shadow-sm flex justify-between items-center'
+              >
+                <div>
+                  <img
+                    src={place.mainThumbnailUrl || 'placeholder-image-url.jpg'}
+                    alt={place.name}
+                    className='w-full h-48 object-cover mb-4 rounded-lg'
                   />
-                  방문할 장소로 선택
-                </label>
+                  <h2 className='text-lg font-bold mb-2'>{place.name}</h2>
+                  <p className='text-gray-600'>{place.address}</p>
+                </div>
+                <button
+                  onClick={() => handleSelect(place)}
+                  className={`ml-4 p-2 rounded-full text-white ${
+                    selectedPlaces.some(
+                      (selected) => selected.contentId === place.contentId
+                    )
+                      ? 'bg-red-500'
+                      : 'bg-blue-500'
+                  }`}
+                  style={{ width: '40px', height: '40px' }}
+                >
+                  {selectedPlaces.some(
+                    (selected) => selected.contentId === place.contentId
+                  )
+                    ? '-'
+                    : '+'}
+                </button>
               </li>
             ))}
           </ul>
