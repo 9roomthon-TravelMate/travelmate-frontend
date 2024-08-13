@@ -296,6 +296,20 @@ export const fetchRecommendedSchedules = async () => {
   }
 };
 
+// 게시물 삭제하기
+export const deletePost = async (postId) => {
+  try {
+    await axios.delete(`${API_BASE_URL}/post/delete`, {
+      params: { postid: postId },
+      withCredentials: true,
+    });
+  } catch (error) {
+    throw error.response
+      ? error.response.data
+      : new Error('게시물 삭제 중 에러 발생:', error);
+  }
+};
+
 // 회원탈퇴
 export const deleteAccount = async () => {
   try {
