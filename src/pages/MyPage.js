@@ -111,12 +111,6 @@ export default function MyPage() {
                     <h3 className="text-lg font-semibold">{post.title}</h3>
                     <p className="text-gray-700">{post.content}</p>
                   </div>
-                  <button 
-                    onClick={() => handleDeletePost(post.id)} 
-                    className="text-red-500 text-sm absolute bottom-4 right-4"
-                  >
-                    삭제
-                  </button>
                 </div>
               ))}
             </div>
@@ -176,3 +170,4 @@ export default function MyPage() {
     </div>
   );
 }
+
