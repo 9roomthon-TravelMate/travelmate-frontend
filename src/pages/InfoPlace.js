@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import defaultImage from'../assets/images/default_image.jpg';
 import { fetchTourPlace } from "../utils/api";
 import TourSpotReviewList from '../components/TourSpotReviewList';
@@ -12,9 +12,8 @@ import ImageGallery from '../components/ImageGallery';
 const KAKAO_API_JAVASCRIPT_KEY = process.env.REACT_APP_KAKAO_API_JAVASCRIPT_KEY;
 
 function InfoPlace() {
-  const location = useLocation();
+  const { id: placeId } = useParams();
   //const areaInfo = {...location.state};
-  const { info } = location.state || {};
   const [place, setPlace] = useState(null);
   const [error, setError] = useState(null);
   const [reviewsReloadTrigger, setReviewsReloadTrigger] = useState(false);
@@ -25,7 +24,7 @@ function InfoPlace() {
   useEffect(() => {
     const getPlaces = async () => {
       try {
-        const data = await fetchTourPlace(info);
+        const data = await fetchTourPlace(placeId);
         setPlace(data);
 
         setImages([
@@ -42,7 +41,7 @@ function InfoPlace() {
       }
     };
     getPlaces();
-  }, [info]);
+  }, [placeId]);
   
   // reviewStat이 아직 초기화되지 않은 경우에 초기화
   useEffect(() => {
@@ -115,7 +114,7 @@ function InfoPlace() {
               </div>
               
               <TourSpotReviewList 
-                tourSpotId={info} 
+                tourSpotId={placeId} 
                 reviewStat={reviewStat} 
                 setReviewStat={setReviewStat} 
                 reloadTrigger={reviewsReloadTrigger} 
@@ -123,7 +122,7 @@ function InfoPlace() {
 
               <div className="border-b mt-6 mb-4 border-gray-300"></div>
               <div className="font-bold text-lg text-gray-800 mb-2">내 리뷰</div>
-              <TourSpotReviewForm tourSpotId={info} onSubmitSuccess={handleReviewSubmitSuccess} />
+              <TourSpotReviewForm tourSpotId={placeId} onSubmitSuccess={handleReviewSubmitSuccess} />
               
             </>
           ) : (

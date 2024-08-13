@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         element: <InfoArea />,
       },
       {
-        path: '/InfoPlace',
+        path: '/InfoPlace/:id',
         element: <InfoPlace />,
       },
       { path: '/testpage', element: <ProtectedRoute element={<TestPage />} /> },
