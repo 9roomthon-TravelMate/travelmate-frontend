@@ -44,7 +44,7 @@ export default function TravelPeriodPage() {
           여행을 떠날 일자와 돌아올 일자를 선택해 주세요.
         </h1>
         <div className='flex flex-col lg:flex-row items-center mb-8'>
-          <div className='w-full lg:w-2/3 mb-8 lg:mb-0'>
+          <div className='w-full lg:w-5/6 mb-8 lg:mb-0'>
             <div className='bg-white p-6 rounded-lg shadow-lg flex flex-col justify-between h-full'>
               <label className='block text-2lg mb-4'>
                 날짜를 선택해주세요.
@@ -104,7 +104,7 @@ export default function TravelPeriodPage() {
             </div>
           </div>
 
-          <div className='flex justify-center items-center w-full lg:w-1/3 p-4 lg:p-0'>
+          <div className='flex justify-center items-center w-full lg:w-1/6 p-4 lg:p-0'>
             <img
               src={travel_mate_char}
               alt='Travel Mate'
