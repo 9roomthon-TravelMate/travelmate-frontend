@@ -206,8 +206,12 @@ export const fetchLikedPosts = async () => {
     const response = await axios.get(`${API_BASE_URL}/mypage/likes`, {
       withCredentials: true,
     });
+
+    // 반환할 데이터 구조에 title과 content를 추가
     return response.data.map(post => ({
       id: post.id,
+      title: post.title,          // title 추가
+      content: post.content,      // content 추가
       imageUri: post.imageUri
     }));
   } catch (error) {
@@ -223,8 +227,12 @@ export const fetchMyPosts = async () => {
     const response = await axios.get(`${API_BASE_URL}/mypage/posts`, {
       withCredentials: true,
     });
+
+    // 반환할 데이터 구조에 title과 content를 추가
     return response.data.map(post => ({
       id: post.id,
+      title: post.title,          // title 추가
+      content: post.content,      // content 추가
       imageUri: post.imageUri
     }));
   } catch (error) {
