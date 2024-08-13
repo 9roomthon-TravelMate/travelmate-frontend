@@ -18,8 +18,10 @@ export default function HomePage() {
           <p className='text-3xl lg:text-6xl font-bold mb-8 lg:mb-12'>
             Travel Mate에 오신 것을 환영합니다.
           </p>
-          <p className='text-3lg mb-8'>국내 여행을 계획 중이신가요?</p>
-          <p className='text-3lg mb-12 lg:mb-32'>
+          <p className='text-3lg mb-8 text-gray-600'>
+            국내 여행을 계획 중이신가요?
+          </p>
+          <p className='text-3lg mb-12 lg:mb-32 text-gray-600'>
             여행을 떠날 지역, 기간, 취향을 알려주시면 자동으로 맞춤형 코스를
             추천해 드립니다.
           </p>
