@@ -55,8 +55,9 @@ function InfoMain() {
     
 
     const handleAreaClick = (area) => {
-      navigate('/InfoArea', { state: { area } });
-      
+      const params = new URLSearchParams();
+      params.set('area', area.id);
+      navigate(`/InfoArea?${params.toString()}`, { state: { areaCodes } });
     };
     
 
