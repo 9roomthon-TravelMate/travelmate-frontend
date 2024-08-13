@@ -91,17 +91,14 @@ export default function Community() {
     try {
       const isLiked = likedPosts.has(postId);  // 현재 좋아요 상태 확인
       const url = `${API_BASE_URL}/like/${isLiked ? 'remove' : 'add'}`;
+      
+      const formData = new FormData();
       const likeDto = { postId };
-      const data = {
-        LikeDto: likeDto
-      };
-  
+      formData.append('likeDto', JSON.stringify(likeDto));
+
       const response = await fetch(url, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+        body: formData,
         credentials: 'include',
       });
   
