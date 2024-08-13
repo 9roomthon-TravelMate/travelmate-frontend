@@ -4,13 +4,14 @@ import './css/CreatePost.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
+
 export default function CreatePost() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [files, setFiles] = useState([]);
   const [hashtags, setHashtags] = useState([]);
   const [newHashtag, setNewHashtag] = useState('');
-  const [error, setError] = useState(''); // Error state added
+  const [error, setError] = useState('');
   const [showErrorModal, setShowErrorModal] = useState(false);
   const navigate = useNavigate();
 
@@ -47,22 +48,17 @@ export default function CreatePost() {
       content,
       hashtags
     };
-    const data = {
-        PostDto: postDto
-      };
-    const json = JSON.stringify(data);
-    const blob = new Blob([json], { type: 'application/json' });
 
-    formData.append('postdto', blob);
+    // JSON 데이터를 문자열로 변환하여 FormData에 추가
+    formData.append('postDto', JSON.stringify(postDto));
+    
     files.forEach(file => formData.append('file', file));
 
     try {
-        console.log("form", formData); 
-        console.log("postdto", data); 
-        const response = await fetch(`${API_BASE_URL}/post/create`, {
+      const response = await fetch(`${API_BASE_URL}/post/create`, {
         method: 'POST',
         body: formData,
-        credentials: 'include', // 쿠키정보도 같이 보내는 것
+        credentials: 'include',
       });
 
       if (!response.ok) {
@@ -164,6 +160,3 @@ export default function CreatePost() {
     </div>
   );
 }
-
-
-
