@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { saveVisitedPlaces } from '../utils/api';
+import defaultImage from'../assets/images/default_image.jpg';
+
 
 export default function SummaryPage() {
   const location = useLocation();
@@ -36,21 +38,47 @@ export default function SummaryPage() {
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: '#f2f2f2',
-        minHeight: '100vh',
-        paddingTop: '1rem',
-      }}
-    >
-      <div className='container mx-auto p-4 mt-12'>
-        <div className='mb-12'>
-          <h1 className='text-2xl mb-8' style={{ color: '#7E7C7C' }}>
-            당신의 취향에 딱 맞는 장소들을 찾았습니다!
-          </h1>
-          <p className='text-3xl mb-12'>
-            방문하고 싶은 장소들을 내 여행에 추가해보세요.
-          </p>
+    <div className='container mx-auto p-4'>
+      <div className='mb-8 mt-8'>
+        <h1 className='text-lg mb-4 mt-12' style={{ color: '#7E7C7C' }}>
+          당신의 취향에 딱 맞는 장소들을 찾았습니다!
+        </h1>
+        <p className='text-2xl mb-12'>
+          방문하고 싶은 장소들을 내 여행에 추가해보세요.
+        </p>
+      </div>
+      <div className='flex justify-between'>
+        {/* 왼쪽 추천 장소 리스트 */}
+        <div className='w-1/2 pr-2'>
+          <h2
+            className='text-xl font-semibold mb-4'
+            style={{ color: '#411A90' }}
+          >
+            # 추천 장소
+          </h2>
+          <ul className='grid grid-cols-1 gap-4'>
+            {places.map((place, index) => (
+              <li key={index} className='border p-4 rounded-lg shadow-sm'>
+                <img
+                  src={place.mainThumbnailUrl || defaultImage}
+                  alt={place.name}
+                  className='w-full h-48 object-cover mb-4 rounded-lg'
+                />
+                <h2 className='text-lg font-bold mb-2'>{place.name}</h2>
+                <p className='text-gray-600'>{place.address}</p>
+                <label className='block mt-4'>
+                  <input
+                    type='checkbox'
+                    checked={selectedPlaces.some(
+                      (selected) => selected.contentId === place.contentId
+                    )}
+                    onChange={() => handleSelect(place)}
+                  />
+                  방문할 장소로 선택
+                </label>
+              </li>
+            ))}
+          </ul>
         </div>
         <div className='flex justify-between'>
           {/* 왼쪽 추천 장소 리스트 */}
