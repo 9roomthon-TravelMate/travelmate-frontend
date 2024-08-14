@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { saveVisitedPlaces } from '../utils/api';
+import defaultImage from'../assets/images/default_image.jpg';
+
 
 export default function SummaryPage() {
   const location = useLocation();
@@ -56,7 +58,7 @@ export default function SummaryPage() {
             {places.map((place, index) => (
               <li key={index} className='border p-4 rounded-lg shadow-sm'>
                 <img
-                  src={place.mainThumbnailUrl || 'placeholder-image-url.jpg'}
+                  src={place.mainThumbnailUrl || defaultImage}
                   alt={place.name}
                   className='w-full h-48 object-cover mb-4 rounded-lg'
                 />
