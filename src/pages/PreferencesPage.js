@@ -2,42 +2,70 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuthStore from '../context/useAuthStore';
 import { sendSurveyData } from '../utils/api';
+import nature from '../assets/images/nature.png';
+import city from '../assets/images/city.png';
+import adventure from '../assets/images/adventure.png';
+import comfortable from '../assets/images/comfortable.png';
+import hotel from '../assets/images/hotel.png';
+import tent from '../assets/images/tent.png';
+import rest from '../assets/images/rest.png';
+import different from '../assets/images/different.png';
+import landmark from '../assets/images/landmark.png';
+import newthing from '../assets/images/newthing.png';
+import plan from '../assets/images/plan.png';
+import improvise from '../assets/images/improvise.png';
+import photo from '../assets/images/photo.png';
+import eyes from '../assets/images/eyes.png';
 
 const questions = [
   {
     question: '1. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
-    option1: '자연 속에서\n 여유롭게 산책하고 싶어',
-    option7: '화려한 도시의 야경을 보러 갈래',
+    option1: '자연 속에서<br />여유롭게 산책하고 싶어',
+    option7: '화려한 도시의<br /> 야경을 보러 갈래',
+    imageLeft: nature,
+    imageRight: city,
   },
   {
     question: '2. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
-    option1: '새로운 곳을 찾아 모험을 떠날래',
+    option1: '새로운 곳을<br /> 찾아 모험을 떠날래',
     option7: '익숙한 편안함이 좋아',
+    imageLeft: adventure,
+    imageRight: comfortable,
   },
   {
     question: '3. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
-    option1: '비싸더라도 숙소는 편해야지!',
-    option7: '잠만 자는 건데\n 저렴한 숙소도 괜찮아~',
+    option1: '비싸더라도 <br />숙소는 편해야지!',
+    option7: '잠만 자는 건데<br />저렴한 숙소도 괜찮아~',
+    imageLeft: hotel,
+    imageRight: tent,
   },
   {
     question: '4. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
     option1: '여행은 쉬러 가는 거지~',
-    option7: '여행은 색다른 것을 즐기는 거지!',
+    option7: '여행은 <br />색다른 것을 즐기는 거지!',
+    imageLeft: rest,
+    imageRight: different,
   },
   {
     question: '5. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
-    option1: '많은 사람들에게 \n인기 있는 랜드마크에 가보고 싶어',
-    option7: '사람들에게 잘 알려지지 \n않은 나만의 장소를 찾고 싶어',
+    option1: '많은 사람들에게<br />인기 있는 랜드마크에 가보고 싶어',
+    option7: '사람들에게 잘 알려지지<br /> 않은 나만의 장소를 찾고 싶어',
+    imageLeft: landmark,
+    imageRight: newthing,
   },
   {
     question: '6. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
-    option1: '버려지는 시간이 아까워!\n 여행 계획은 철저하게',
-    option7: '흘러가는대로 즐기는 거지~\n 즉흥 여행!',
+    option1: '버려지는 시간이 아까워<br />여행 계획은 철저하게!',
+    option7: '흘러가는대로 <br />즐기는 거지~ 즉흥 여행!',
+    imageLeft: plan,
+    imageRight: improvise,
   },
   {
     question: '7. 다음 중 당신의 취향에 더 잘 맞는 응답을 골라주세요!',
-    option1: '인생 사진은 건져야지!\n 남는 건 사진 뿐',
-    option7: '사진은 별로 안중요해.\n 즐거우면 된 거야!',
+    option1: '인생 사진은 건져야지!<br />남는 건 사진 뿐',
+    option7: '사진은 별로 안중요해<br />즐거우면 된 거야!',
+    imageLeft: photo,
+    imageRight: eyes,
   },
   {
     question: '8. 함께 여행하는 일행이 있나요?',
@@ -178,47 +206,63 @@ export default function PreferencesSurveyPage() {
       }}
     >
       <div className='container mx-auto p-4 mt-12'>
-        <h1 className='text-xl mb-4 mt-12' style={{ color: '#7E7C7C' }}>
+        <h1 className='text-2xl mb-8 text-left' style={{ color: '#7E7C7C' }}>
           마지막으로 당신의 취향을 알려주세요!
         </h1>
-        <h2 className='text-2xl mb-36' style={{ color: '#000' }}>
+        <h2 className='text-3xl mb-36 text-left'>
           {questions[currentQuestion].question}
         </h2>
 
         <div
           className='flex flex-col justify-between'
-          style={{ minHeight: '200px' }}
+          style={{ minHeight: '300px' }}
         >
           {currentQuestion < 7 ? (
-            <div className='flex justify-between items-center mb-8'>
-              <span
-                className='flex-shrink-0 w-1/4 text-center text-lg text-black'
-                style={{ whiteSpace: 'pre-line' }}
-              >
-                {questions[currentQuestion].option1}
-              </span>
-              <div className='flex justify-center gap-4 w-2/4'>
-                {[...Array(7)].map((_, index) => (
-                  <button
-                    key={index + 1}
-                    onClick={() => handleSelectAnswer(index + 1)}
-                    className={`py-2 px-4 rounded-full ${
-                      selectedAnswer === index + 1
-                        ? 'bg-purple-500 text-white'
-                        : 'bg-gray-200 text-gray-700'
-                    }`}
-                  >
-                    {index + 1}
-                  </button>
-                ))}
+            <>
+              <div className='flex justify-between items-center mb-12'>
+                <span
+                  className='w-2/3 text-center text-3xl text-black'
+                  dangerouslySetInnerHTML={{
+                    __html: questions[currentQuestion].option1,
+                  }}
+                />
+                <span
+                  className='w-2/3 text-center text-3xl text-black'
+                  dangerouslySetInnerHTML={{
+                    __html: questions[currentQuestion].option7,
+                  }}
+                />
               </div>
-              <span
-                className='flex-shrink-0 w-1/4 text-center text-lg text-black'
-                style={{ whiteSpace: 'pre-line' }}
-              >
-                {questions[currentQuestion].option7}
-              </span>
-            </div>
+              <div className='flex flex-col items-center mb-8'>
+                <div className='flex justify-center w-full items-center gap-16'>
+                  <img
+                    src={questions[currentQuestion].imageLeft}
+                    alt='Character Left'
+                    className='w-1/4 max-w-[150px]'
+                  />
+                  <div className='flex gap-4 justify-center'>
+                    {[...Array(7)].map((_, index) => (
+                      <button
+                        key={index + 1}
+                        onClick={() => handleSelectAnswer(index + 1)}
+                        className={`py-4 px-8 rounded-full text-3xl ${
+                          selectedAnswer === index + 1
+                            ? 'bg-[#a8e6ff] text-black'
+                            : 'bg-gray-200 text-gray-700'
+                        }`}
+                      >
+                        {index + 1}
+                      </button>
+                    ))}
+                  </div>
+                  <img
+                    src={questions[currentQuestion].imageRight}
+                    alt='Character Right'
+                    className='w-1/4 max-w-[150px] '
+                  />
+                </div>
+              </div>
+            </>
           ) : (
             <div className='flex justify-center items-center mb-8'>
               <div className='flex gap-4'>
@@ -226,9 +270,9 @@ export default function PreferencesSurveyPage() {
                   <button
                     key={index}
                     onClick={() => handleSelectAnswer(option)}
-                    className={`py-2 px-4 rounded-full ${
+                    className={`py-4 px-8 rounded-full text-3xl ${
                       selectedAnswer === option
-                        ? 'bg-purple-500 text-white'
+                        ? 'bg-[#a8e6ff] text-black'
                         : 'bg-gray-200 text-gray-700'
                     }`}
                   >
@@ -244,17 +288,17 @@ export default function PreferencesSurveyPage() {
               onClick={() =>
                 setCurrentQuestion(Math.max(0, currentQuestion - 1))
               }
-              className='bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded-full'
+              className='bg-gray-300 hover:bg-gray-500 text-black py-4 px-8 rounded-full text-3xl'
               disabled={currentQuestion === 0}
             >
               이전
             </button>
             <button
               onClick={handleNext}
-              className={`py-2 px-4 rounded-full ${
+              className={`py-4 px-8 rounded-full text-3xl ${
                 selectedAnswer !== null
-                  ? 'bg-purple-500 hover:bg-purple-700 text-white'
-                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  ? 'bg-[#a8e6ff] hover:bg-[#7eccff] text-black'
+                  : 'bg-gray-300 text-black cursor-not-allowed'
               }`}
               disabled={selectedAnswer === null}
             >

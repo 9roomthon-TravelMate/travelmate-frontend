@@ -14,6 +14,7 @@ export default function TravelPeriodPage() {
   const [startDate, endDate] = dateRange;
   const setTravelPeriod = useAuthStore((state) => state.setTravelPeriod);
   const navigate = useNavigate();
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
 
   const formatDate = (date) => {
     const year = date.getFullYear();
@@ -28,6 +29,7 @@ export default function TravelPeriodPage() {
         start: formatDate(startDate),
         end: formatDate(endDate),
       });
+      setIsButtonClicked(true);
       navigate('/preferencespage');
     } else {
       alert('여행 기간을 선택해주세요!');
@@ -40,13 +42,18 @@ export default function TravelPeriodPage() {
       className='p-4'
     >
       <div className='container mx-auto p-4 mt-12'>
-        <h1 className='text-2xl mb-12 mt-12'>
+        <h1 className='text-2xl mb-8' style={{ color: '#7E7C7C' }}>
+          여행 일정을 정하세요!
+        </h1>
+        <h1 className='text-3xl mb-12'>
           여행을 떠날 일자와 돌아올 일자를 선택해 주세요.
         </h1>
         <div className='flex flex-col lg:flex-row items-center mb-8'>
           <div className='w-full lg:w-2/3 mb-8 lg:mb-0'>
             <div className='bg-white p-6 rounded-lg shadow-lg flex flex-col justify-between h-full'>
-              <label className='block text-lg mb-4'>날짜를 선택해주세요.</label>
+              <label className='block text-2lg mb-4'>
+                날짜를 선택해주세요.
+              </label>
               <DatePicker
                 locale='ko'
                 selected={startDate}
@@ -93,8 +100,11 @@ export default function TravelPeriodPage() {
               <div className='flex justify-end mt-4'>
                 <button
                   onClick={handleNext}
-                  className='text-white py-3 px-6 rounded-lg'
-                  style={{ backgroundColor: '#411A90' }}
+                  className={`py-3 px-6 rounded-lg ${
+                    isButtonClicked
+                      ? 'bg-[#a8e6ff] text-black'
+                      : 'bg-gray-200 text-black'
+                  }`}
                 >
                   다음
                 </button>
